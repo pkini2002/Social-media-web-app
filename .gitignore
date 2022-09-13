@@ -1,0 +1,12 @@
+.env
+env/
+socials/db.sqlite3
+socials/base/__pycache__/
+socials/base/migrations/__pycache__/
+socials/socials/__pycache__/
+socials/media/
+socials/staticfiles/
+*.log
+*.pot
+*.pyc
+__pycache__
