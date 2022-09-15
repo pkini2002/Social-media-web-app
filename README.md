@@ -24,7 +24,14 @@
    ```bash
    pip install virtualenv
    ```
+   **For Windows Users
+   ```bash
+   virtualenv env
+   env/Scripts/activate
+   ```
 
+
+   ** For Linux Users
    ```bash
    virtualenv env
    source env/Scripts/activate
