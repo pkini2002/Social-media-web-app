@@ -1,9 +1,90 @@
-{% extends 'main.html' %} {% load static %} {% block styles %}
+{% extends 'main.html' %}
+{% load static %} 
+{% block styles %}
 <!-- Replace {name} with the respective css file -->
 <link rel="stylesheet" href="{% static 'styles/signup.css' %}" />
 {% endblock %}
 
-{% block content %}
-<h1>This is signup page</h1>
+{% block content %} 
+<!-- Add code from body here -->
+<div class="container left">
+    <form action="{% url 'signup' %}" method="POST" class="form-container">
+             {% csrf_token %}
+             <div class="row">
+                <div class="col-md-7 shadow left mt-3 hover01">
+                 <h2 class="heading mt-5">Sign Up</h2>
+                 <div class="input-box">
+                    <input
+                      type="text"
+                      id="username"
+                      placeholder="Enter Username"
+                      name="username" class="form-1"/>  
+                  </div>
 
+                  <div class="input-box">
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Enter Your Email"
+                      name="email" class="form-1"/>
+                  </div>
+
+                  <div class="input-box">
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Enter Your Password"
+                      name="password" class="form-1"/>
+                  </div>
+
+                  <div class="input-box">
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Confirm Password"
+                      name="password" class="form-1"/>
+                  </div>
+                  <br />
+
+                  <div style="text-align: center">
+                    <p class="flex">
+                      By creating the account you agree to our
+                      <a href="#" style="color: blue" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms & Privacy</a>
+                    </p>
+            
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Terms and Conditions</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perspiciatis voluptatem quia officiis provident quis esse autem dolor temporibus, voluptate quisquam tempore sed, expedita fuga. Aperiam ipsa aspernatur hic reiciendis!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ </p>
+</div>
+              
+<button class="btn btn-success signup mt-2" type="submit">Sign Up</button>
+    <div>
+    <p style="text-align: center; margin-top: 20px; margin-left: 300px;">
+        Already a user?<a href="{% url 'login' %}"
+        style="color: rgb(62, 156, 255)">Login here</a>
+    </p>
+</div>
+</div>
+
+<div class="col-md-5 right">
+    <img src="{% static 'images/signup.png' %}">
+</div>
+</div>
+</form>
+</div>
 {% endblock %}
