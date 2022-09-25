@@ -24,14 +24,14 @@
    ```bash
    pip install virtualenv
    ```
-   **For Windows Users
+   **For Windows Users**
    ```bash
    virtualenv env
    env/Scripts/activate
    ```
 
 
-   ** For Linux Users
+   **For Linux Users**
    ```bash
    virtualenv env
    source env/Scripts/activate
@@ -63,9 +63,55 @@
    ```djangotemplate
    python manage.py createsuperuser
    ```
+   
 
    Enter your username, email and password.
 
 6. Run server
    ```bash
    python manage.py runserver
+   
+   
+ ## To do list
+ 
+ - [ ] Login Form
+ - [ ] Signup Form
+ - [ ] Profile Update Form
+ - [ ] Forgot Password Form
+ - [ ] Create a post
+ - [ ] Home page
+ - [ ] Friends Page
+ - [ ] Others Profile Page
+ - [ ] Search a name and design a logo for the application
+ 
+ 
+ ## Features
+ 
+ - [ ] Like & Comment on Others posts
+ - [ ] Post images and news on Social media
+ - [ ] Search bar to search people
+ - [ ] Follow and Unfollow users
+ - [ ] Display Leaderboard page in home
+ - [ ] Implement Rewards Api to reward users top on leaderboard
+ - [ ] Newsletter feature
+ 
+ ### Points distribution
+ 
+ <table>
+ <tr>
+ <td>Signup</td>
+ <td>3 points</td>
+ </tr>
+ 
+ <td>Login</td>
+ <td>1 points</td>
+ </tr>
+ 
+ <td>Creating a Post</td>
+ <td>2 points</td>
+ </tr>
+ </table>
+ 
+ 
+      
+      
