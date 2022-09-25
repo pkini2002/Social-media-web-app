@@ -1,4 +1,8 @@
 /* Styles of login page needs to be written here */
+body{
+    overflow-y: hidden;
+}
+
 .sub-text{
     font-weight: 600;
     font-size: 45px;
@@ -22,9 +26,8 @@ body{
 }
 
 .card{
-    position: relative;
-    bottom: 60px;
-    right: 80px;
+    margin-top: 20px !important;
+    margin-left: 100px !important;
 }
 
 .signup{
@@ -46,3 +49,132 @@ body{
 .under-text{
    color: #5161ce;
 }
+
+/* Media queries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+   .card{
+    margin: 80px !important;
+    position: relative;
+    right: 80px !important;
+    height: 600px !important;
+   }
+}
+
+@media only screen and (min-height: 800px){
+    .card{
+        height: 600px !important;
+        position: relative;
+        top: 100px !important;
+        margin: 50px !important;
+    }
+}
+
+/* Ipad  */
+@media only screen and (min-height: 1000px){
+    .card{
+        width: 250% !important;
+        position: relative;
+        right: 200px !important;
+    }
+}
+
+
+/* Surface pro 7 */
+@media only screen and (device-width:912px) and (device-height:1368px){
+    .card{
+        width: 300% !important;
+        height: 100% !important;
+        position: relative;
+        right: 260px !important;
+        top: 200px !important;
+    }
+}
+
+/* Nest Hub */
+@media only screen and (device-width:1024px) and (device-height:600px){
+    .card{
+        width: 200% !important;
+        position: relative;
+        right: 140px !important;
+        bottom: 60px !important;
+    }
+}
+
+/* Galaxy fold */
+@media only screen and (device-width:280px) and (device-height:653px){
+    .card{
+       position: relative !important;
+       bottom: 300px !important;
+    }
+}
+
+/* Nest Hub max */
+@media only screen and (device-width:1280px) and (device-height:800px){
+   .card{
+      position: relative;
+      bottom: 200px !important;
+   }
+}
+
+@media only screen and (min-width:1200px){
+    .card{
+        position: relative;
+        bottom: 90px !important;
+        right: 50%;
+    }
+}
+
+/* Surface Duo */
+@media only screen and (device-width:540px) and (device-height:720px){
+   .card{
+    position: relative;
+    bottom: 100px!important;
+   }
+}
+
+/* Galaxy fold */
+@media only screen and (device-width:280px) and (device-height:653px){
+    .card{
+        position: relative;
+        bottom: 50% !important;
+    }
+ }
+
+
+@media only screen and (min-width:992px) and (max-width:1199px){
+    .card{
+        width: 200% !important;
+        position: relative;
+        right: 210px !important;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:991px){
+    .card{
+        width: 250% !important;
+        position: relative;
+        right: 210px !important;
+    }
+}
+
+@media only screen and (min-width:500px) and (max-width:767px){
+    .card{
+        position: relative;
+        right: 120px !important;
+        width: 120% !important;
+    }
+}
+
+@media only screen and (min-width:150px) and (max-width:355px){
+    .card{
+        width:250% !important;
+        position: relative;
+        top: 600px !important;
+    }
+}
+
+
+
+
+
