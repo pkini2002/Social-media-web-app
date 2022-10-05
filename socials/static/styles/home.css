@@ -1,8 +1,6 @@
 .posts{
-    /* width: 450px; */
     height: 330px;
     width: fit-content;
-    /* padding-left: 40px; */
 }
 
 .post-item{
@@ -59,11 +57,6 @@
     top: 3px;
 }
 
-/*
- * Reference - https://codepen.io/supah/pen/WwrJpw
- */
-
-/* basic */
 *,
 *:before,
 *:after {
@@ -119,7 +112,7 @@ a {
     right: 17px;
 }
 .leaderboard ol {
-	counter-reset: number; /* 定義和初始化計數器 */
+	counter-reset: number; 
 }
 .leaderboard li {
 	padding: 16px;
@@ -131,8 +124,8 @@ a {
 	background-color: transparent;
 }
 .leaderboard li:before {
-	counter-increment: number; /* 遞增計數器 */
-	content: counter(number) "."; /* 顯示計數器 */
+	counter-increment: number;
+	content: counter(number) "."; 
 	margin-right: 4px;
 }
 .leaderboard li:nth-child(1) {
@@ -150,4 +143,16 @@ a {
 .leaderboard li:nth-child(5) {
 	background: #c24448;
 }
+
+.search-heading{
+    margin-top: 40px;
+    overflow-y: hidden;
+    color: #c24448;
+}
+
+.btn-outline-success{
+    margin-top: 10px;
+    width: 100%;
+}
+
 

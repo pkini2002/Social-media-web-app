@@ -14,6 +14,39 @@
 
 
 {% block content %} 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+        <li class="d-flex" style="color:white;">
+            <img
+            class="rounded-circle"
+            width="35"
+            height="35"
+            style="object-fit: cover; cursor: pointer;"
+            src="{% static 'images/user/default.jpg'%}"
+          />
+        </li>
+      </div>
+    </div>
+  </nav>
 
 <div class="row">
     <div class="col">
@@ -117,7 +150,13 @@
 </div>
 
 <div class="col">
-
+  <div class="container search-section">
+    <h3 class="search-heading">Search Your Friends</h3>
+    <form>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+  </div>
 </div>
 
 </div>
