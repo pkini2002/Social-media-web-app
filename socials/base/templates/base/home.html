@@ -6,4 +6,10 @@
 {% block content %}
 
 <h1>This is home page</h1>
+{% if user.is_authenticated %}
+Hello User!
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
 {% endblock %}
