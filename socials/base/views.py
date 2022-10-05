@@ -19,3 +19,7 @@ def login(request):
 def signup(request):
     context={}
     return render(request,"base/signup.html",context)
+
+def friends(request):
+    context={}
+    return render(request,"base/friends.html",context)
