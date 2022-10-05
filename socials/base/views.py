@@ -15,6 +15,10 @@ from django.contrib.auth import get_user_model
 def home(request):
     context={}
     return render(request,"base/home.html",context)
+
+def profile(request):
+    context={}
+    return render(request,"base/profile.html",context)
     
 # Create your views here.
 def login(request):
