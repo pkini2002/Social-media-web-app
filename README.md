@@ -92,8 +92,6 @@
  - [ ] Search bar to search people
  - [ ] Follow and Unfollow users
  - [ ] Display Leaderboard page in home
- - [ ] Implement Rewards Api to reward users top on leaderboard
- - [ ] Newsletter feature
  
  ### Points distribution
  
