@@ -1,0 +1,99 @@
+{% extends 'main.html' %} {% load static %} {% block styles %}
+<!-- Replace {name} with the respective css file -->
+<link rel="stylesheet" href="{% static 'styles/friends.css' %}" />
+{% endblock %}
+
+{% block content %}
+<h1 class="heading">Connect with people you know!</h1>
+<div class="container friends">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-2.jpg' %}" class="card-img-top" alt="img">
+                <div class="card-body">
+                  <p class="card-title">Chimalma Irma</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-3.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Joss Alexandra</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-4.webp' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Kai Euthymios</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-5.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Marnie Vilja</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-1.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Tevin Cáel</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-5.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Calpurnia Malak</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-6.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Florianus Adrastos</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-7.webp' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Čedomir Chikelu</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card hover01" style="width: 18rem;">
+                <img src="{% static 'images/friends/img-8.webp' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-title">Andrea Stella</p>
+                  <button class="button-click">View Profile</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
