@@ -80,3 +80,7 @@ def logout(request):
 def friends(request):
     context={}
     return render(request,"base/friends.html",context)
+
+def error(request):
+    context={}
+    return render(request,"base/404.html",context)
