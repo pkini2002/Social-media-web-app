@@ -1,15 +1,94 @@
-{% extends 'main.html' %} {% load static %} {% block styles %}
-<!-- Replace {name} with the respective css file -->
+{% extends 'main.html' %}
+{% load static %} 
+
+{% block styles %}
 <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
 {% endblock %}
 
-{% block content %}
 
-<h1>This is home page</h1>
-{% if user.is_authenticated %}
-Hello User!
-<a href="{% url 'logout' %}">Logout</a>
-{% else %}
-<a href="{% url 'login' %}">Login</a>
-{% endif %}
+<!-- Title -->
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+
+
+{% block content %} 
+
+<div class="row">
+    <div class="col">
+        1 of 3
+      </div>
+    
+<div class="col-6">
+<div class="card post-item container">
+    <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
+    <div class="card-body">
+      <p class="card-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde similique facere fugiat voluptate non ipsum ad tempora, ab esse dolores in alias sapiente numquam! Magni, facere fuga. Aut, nisi.</p>
+    </div>
+    <span class="like">
+        <div class="col-6">
+        <i class="fa-regular fa-heart fa-2x"></i>
+        <i class="fa-regular fa-comment fa-2x"></i>
+        </div>
+
+        <div class="col-6">
+        <span class="author">
+        <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
+        <button class="profile">View Profile</button>
+         </span>
+        </div>
+    </span>
+    <a href="#" class="comment">View Comments 👈🏻</a>
+  </div>
+
+  <div class="card post-item container">
+    <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
+    <div class="card-body">
+      <p class="card-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde similique facere fugiat voluptate non ipsum ad tempora, ab esse dolores in alias sapiente numquam! Magni, facere fuga. Aut, nisi.</p>
+    </div>
+    <span class="like">
+        <div class="col-6">
+        <i class="fa-regular fa-heart fa-2x"></i>
+        <i class="fa-regular fa-comment fa-2x"></i>
+        </div>
+
+        <div class="col-6">
+        <span class="author">
+        <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
+        <button class="profile">View Profile</button>
+         </span>
+        </div>
+    </span>
+    <a href="#" class="comment">View Comments 👈🏻</a>
+  </div>
+
+  <div class="card post-item container">
+    <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
+    <div class="card-body">
+      <p class="card-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde similique facere fugiat voluptate non ipsum ad tempora, ab esse dolores in alias sapiente numquam! Magni, facere fuga. Aut, nisi.</p>
+    </div>
+    <span class="like">
+        <div class="col-6">
+        <i class="fa-regular fa-heart fa-2x"></i>
+        <i class="fa-regular fa-comment fa-2x"></i>
+        </div>
+
+        <div class="col-6">
+        <span class="author">
+        <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
+        <button class="profile">View Profile</button>
+         </span>
+        </div>
+    </span>
+    <a href="#" class="comment">View Comments 👈🏻</a>
+  </div>
+</div>
+
+<div class="col">
+
+</div>
+
+</div>
+
 {% endblock %}

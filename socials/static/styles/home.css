@@ -1,1 +1,61 @@
-/* Styles of home page needs to be written here */
+.posts{
+    /* width: 450px; */
+    height: 330px;
+    width: fit-content;
+    /* padding-left: 40px; */
+}
+
+.post-item{
+    display: grid;
+    border: 2px solid aliceblue;
+    margin: 40px;
+}
+
+*{
+    overflow-x: hidden;
+}
+
+.post-text{
+    padding-top: 20px;
+    padding-left: 38px;
+    width: 92%;
+    height: 100px;
+}
+
+.like{
+    padding-left: 38px;
+    padding-bottom:10px;
+    padding-top: 10px;
+    display: flex;
+}
+
+.fa-heart:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.fa-comment{
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.comment{
+    padding-bottom: 15px;
+    padding-left: 35px;
+    color: rgb(9, 61, 90);
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.profile{
+    background-color: rgb(12, 23, 105);
+    color: white;
+    border-radius: 15px;
+    border-color: aliceblue;
+}
+
+.badge{
+    position: relative;
+    top: 3px;
+}
+
