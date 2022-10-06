@@ -1,24 +1,6 @@
-/* Styles of profile page needs to be written here */
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-} */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 
 body {
-	/* display: flex; */
 	height: 100vh;
 	justify-content: center;
 	align-items: center;
@@ -27,11 +9,6 @@ body {
 
 
 .profile-card {
-	/* width: 150px;
-	position: absolute; 
-	display: flex;
-	flex-direction: column;
-    */
 	align-items: center; 
 	padding: 2rem;
 	background-color: white;
