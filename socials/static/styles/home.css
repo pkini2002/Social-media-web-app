@@ -155,3 +155,28 @@ a {
     width: 100%;
 }
 
+.follow-img{
+    object-fit: cover;
+}
+
+/* Profile card */
+.status {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	line-height: 1rem;
+	margin-bottom: 1.3rem;
+    overflow-y: hidden;
+}
+
+
+.status-value {
+	color: #212121;
+	font-weight: 700;
+}
+
+.status-text {
+	font-size: 0.8rem;
+	color: #7c7c7d;
+}

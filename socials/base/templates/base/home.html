@@ -5,51 +5,39 @@
 <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
 {% endblock %}
 
-
 <!-- Title -->
 {% block title %}
 <title>Dashboard</title>
 {% endblock %}
 
-
-
 {% block content %} 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        </ul>
-        <li class="d-flex" style="color:white;">
-            <img
-            class="rounded-circle"
-            width="35"
-            height="35"
-            style="object-fit: cover; cursor: pointer;"
-            src="{% static 'images/user/default.jpg'%}"
-          />
-        </li>
-      </div>
-    </div>
-  </nav>
-
 <div class="row">
     <div class="col">
+      <div class="card" style="margin-left:10px; margin-top: 40px;">
+        <img src="{% static 'images/friends/img-2.jpg' %}" class="card-img-top" alt="..." style="height:300px;">
+        <div class="card-title section-heading">Angela Catherine</div>
+        <div class="card-body">
+          <ul class="status">
+            <li>
+              <span class="status-value" style="overflow-y:hidden;">532</span>
+              <span class="status-text" style="overflow-y:hidden;">Posts</span>
+            </li>
+      
+            <li>
+              <span class="status-value" style="overflow-y:hidden;">1.5m</span>
+              <span class="status-text" style="overflow-y:hidden;">Followers</span>
+            </li>
+      
+            <li>
+              <span class="status-value" style="overflow-y:hidden;">423</span>
+              <span class="status-text" style="overflow-y:hidden;">Following</span>
+            </li>
+          </ul>
+          <button class="btn btn-danger" style="justify-content:center;text-align:center;">Update Profile</button>
+        </div>
+      </div>
+
+
         <div class="container con">
             <div class="leaderboard">
                 <div class="head">
@@ -157,8 +145,104 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
   </div>
-
+  <hr>
+  <h3 class="mt-3 search-heading mt-6">People also followed</h3>
   <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title" style="overflow-y:hidden;">Dennis Ritchie</h5>
+                <p class="card-text">Standup Comedian</p>
+                <button class="btn btn-success">Follow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title" style="overflow-y:hidden;">Dennis Ritchie</h5>
+                <p class="card-text">Standup Comedian</p>
+                <button class="btn btn-success">Follow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title" style="overflow-y:hidden;">Dennis Ritchie</h5>
+                <p class="card-text">Standup Comedian</p>
+                <button class="btn btn-success">Follow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title" style="overflow-y:hidden;">Dennis Ritchie</h5>
+                <p class="card-text">Standup Comedian</p>
+                <button class="btn btn-success">Follow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..." style="height:150px;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title" style="overflow-y:hidden;">Dennis Ritchie</h5>
+                <p class="card-text">Standup Comedian</p>
+                <button class="btn btn-success">Follow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
   </div>
 </div>
