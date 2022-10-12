@@ -92,3 +92,7 @@ def error(request):
 def post(request):
     context={}
     return render(request,"base/post.html",context)
+
+def otherprofile(request):
+    context={}
+    return render(request,"base/Otherprofile.html",context)
