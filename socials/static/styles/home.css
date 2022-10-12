@@ -180,3 +180,15 @@ a {
 	font-size: 0.8rem;
 	color: #7c7c7d;
 }
+
+.group{
+	overflow-y: hidden;
+}
+
+.btn-danger{
+     margin-left: 50px;
+}
+
+.last{
+	margin-right: 35px;
+}

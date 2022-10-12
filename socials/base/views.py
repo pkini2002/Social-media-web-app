@@ -88,3 +88,11 @@ def friends(request):
 def error(request):
     context={}
     return render(request,"base/404.html",context)
+
+def post(request):
+    context={}
+    return render(request,"base/post.html",context)
+
+def otherprofile(request):
+    context={}
+    return render(request,"base/Otherprofile.html",context)
