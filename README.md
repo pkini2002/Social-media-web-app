@@ -74,15 +74,15 @@
    
  ## To do list
  
- - [ ] Login Form
- - [ ] Signup Form
+ - [x] Login Form
+ - [x] Signup Form
  - [ ] Profile Update Form
  - [ ] Forgot Password Form
  - [ ] Create a post
- - [ ] Home page
- - [ ] Friends Page
+ - [x] Home page
+ - [x] Friends Page
  - [ ] Others Profile Page
- - [ ] Search a name and design a logo for the application
+ - [x] Search a name and design a logo for the application
  
  
  ## Features

@@ -13,31 +13,33 @@
 {% block content %} 
 <div class="row">
     <div class="col">
-      <div class="card" style="margin-left:10px; margin-top: 40px;">
-        <img src="{% static 'images/friends/img-2.jpg' %}" class="card-img-top" alt="..." style="height:300px;">
-        <div class="card-title section-heading">Angela Catherine</div>
+
+      <div class="card profile-card" style="margin-left:10px; margin-top: 40px;">
+        <!-- <img src="{% static 'images/friends/img-2.jpg' %}" class="card-img-top profile-img" alt="..." style="height:300px;"> -->
+        <div class="card-title section-heading" style=" font-weight: bold;font-size: 25px;  color: #212121;text-align: center;margin-bottom: var(--bs-card-title-spacer-y);">Angela Catherine</div>
         <div class="card-body">
           <ul class="status">
-            <li>
-              <span class="status-value" style="overflow-y:hidden;">532</span>
-              <span class="status-text" style="overflow-y:hidden;">Posts</span>
+            <li class="group">
+              <span class="status-value">532</span>
+              <span class="status-text">Posts</span>
             </li>
       
-            <li>
-              <span class="status-value" style="overflow-y:hidden;">1.5m</span>
-              <span class="status-text" style="overflow-y:hidden;">Followers</span>
+            <li class="group">
+              <span class="status-value">1.5m</span>
+              <span class="status-text">Followers</span>
             </li>
       
-            <li>
-              <span class="status-value" style="overflow-y:hidden;">423</span>
-              <span class="status-text" style="overflow-y:hidden;">Following</span>
+            <li class="group last">
+              <span class="status-value">423</span>
+              <span class="status-text">Following</span>
             </li>
           </ul>
-          <button class="btn btn-danger" style="justify-content:center;text-align:center;">Update Profile</button>
+          <button class="btn btn-danger">Update Profile</button>
         </div>
       </div>
 
 
+      <!-- Leaderboard -->
         <div class="container con">
             <div class="leaderboard">
                 <div class="head">
@@ -71,7 +73,8 @@
             </div>
         </div>
       </div>
-    
+      
+      
 <div class="col-6">
 <div class="card post-item container">
     <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
