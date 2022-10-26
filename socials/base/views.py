@@ -96,3 +96,7 @@ def post(request):
 def otherprofile(request):
     context={}
     return render(request,"base/Otherprofile.html",context)
+
+def profileUpdate(request):
+    context={}
+    return render(request,"base/profileUpdate.html",context)
