@@ -52,6 +52,13 @@
     border-color: aliceblue;
 }
 
+.profile-card{
+	background: linear-gradient(to bottom, #3a404d, #3b4151);
+	color: #fff;
+	backdrop-filter: blur(5px);
+	box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
 .badge{
     position: relative;
     top: 3px;
@@ -172,7 +179,7 @@ a {
 
 
 .status-value {
-	color: #212121;
+	color: #fff;
 	font-weight: 700;
 }
 
@@ -192,3 +199,10 @@ a {
 .last{
 	margin-right: 35px;
 }
+
+.statistics{
+	color: #c24448;
+	overflow-y: hidden;
+	margin-left: 110px;
+}
+

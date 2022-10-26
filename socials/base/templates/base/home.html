@@ -12,12 +12,12 @@
 
 {% block content %} 
 <div class="row">
-    <div class="col">
+    <div class="col column-1">
 
       <div class="card profile-card" style="margin-left:10px; margin-top: 40px;">
-        <!-- <img src="{% static 'images/friends/img-2.jpg' %}" class="card-img-top profile-img" alt="..." style="height:300px;"> -->
-        <div class="card-title section-heading" style=" font-weight: bold;font-size: 25px;  color: #212121;text-align: center;margin-bottom: var(--bs-card-title-spacer-y);">Angela Catherine</div>
+        <div class="card-title section-heading" style=" font-weight: bold;font-size: 25px;  color:#fff;text-align: center;margin-bottom: var(--bs-card-title-spacer-y);">Angela Catherine</div>
         <div class="card-body">
+          <span class="badge text-bg-danger" style="margin-bottom: 20px;margin-left:80px;">Rank 130</span>
           <ul class="status">
             <li class="group">
               <span class="status-value">532</span>
@@ -34,7 +34,11 @@
               <span class="status-text">Following</span>
             </li>
           </ul>
-          <button class="btn btn-danger">Update Profile</button>
+          <button class="btn btn-danger">
+            <a href="{% url 'profileUpdate' %}" style="text-decoration:none;color: aliceblue;">
+             Update Profile
+            </a>
+          </button>
         </div>
       </div>
 
@@ -72,7 +76,15 @@
                 </div>
             </div>
         </div>
+        <br><br>
+
+        <div>
+          <h3 class="statistics">Statistics</h3>
+          <img src="{% static 'images/posts/pie-chart.png' %}" class="card-img-top posts" alt="..." style="width:350px;">
+        </div>
       </div>
+
+      
       
       
 <div class="col-6">
@@ -90,7 +102,11 @@
         <div class="col-6">
         <span class="author">
         <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
-        <button class="profile">View Profile</button>
+        <button class="profile">
+          <a href="{% url 'otherprofile' %}" style="text-decoration:none;color:#fff;">
+            View profile
+            </a>
+        </button>
          </span>
         </div>
     </span>
@@ -111,7 +127,11 @@
         <div class="col-6">
         <span class="author">
         <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
-        <button class="profile">View Profile</button>
+        <button class="profile">
+          <a href="{% url 'otherprofile' %}" style="text-decoration:none;color:#fff;">
+          View profile
+          </a>
+        </button>
          </span>
         </div>
     </span>
@@ -132,7 +152,11 @@
         <div class="col-6">
         <span class="author">
         <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
-        <button class="profile">View Profile</button>
+        <button class="profile">
+          <a href="{% url 'otherprofile' %}" style="text-decoration:none;color:#fff;">
+            View profile
+            </a>
+        </button>
          </span>
         </div>
     </span>
@@ -229,7 +253,7 @@
     </div>
 
     <div class="row">
-      <div class="col">
+      <div class="col col-xs">
         <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
           <div class="row g-0">
             <div class="col-md-4">
@@ -246,10 +270,13 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-outline-success" type="submit">View More</button>
     
   </div>
 </div>
 
 </div>
+
+
 
 {% endblock %}
