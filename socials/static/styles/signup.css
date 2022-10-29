@@ -7,11 +7,17 @@
     text-align: center;
 }
 
+
 .form-1{
     padding: 5px;
     margin-top: 20px;
     width: 80%;
     outline-color: #5161ce;
+}
+
+.rocket-img{
+    height:500px;
+    width: 530px;
 }
 
 
