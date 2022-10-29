@@ -3,6 +3,10 @@
     width: fit-content;
 }
 
+.posts1{
+	margin-left: 10px;
+}
+
 .post-item{
     display: grid;
     border: 2px solid aliceblue;
@@ -64,6 +68,7 @@
     top: 3px;
 }
 
+
 *,
 *:before,
 *:after {
@@ -75,6 +80,15 @@ a {
 	color: #333;
 	text-decoration: none;
 }
+
+.title1{
+	color: white;
+}
+
+.text1{
+	color: white;
+}
+
 .blog {
 	font-size: 14px;
 	font-weight: bold;
@@ -154,7 +168,8 @@ a {
 .search-heading{
     margin-top: 40px;
     overflow-y: hidden;
-    color: #c24448;
+    color: #fff;
+	
 }
 
 .btn-outline-success{
@@ -201,7 +216,6 @@ a {
 }
 
 .statistics{
-	color: #c24448;
 	overflow-y: hidden;
 	margin-left: 110px;
 }
