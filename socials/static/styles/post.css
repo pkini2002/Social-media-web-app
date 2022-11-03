@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Montez);
+
+body {
+    background: rgb(99, 39, 120)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+.wrapper{
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(160, 154, 154, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+}
+
+.text-right{
+    position: relative;
+    left: 200px;
+    font-weight: 600;
+    font-family: 'Lato';
+    color:  #5161ce;
+}
+
