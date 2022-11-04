@@ -4,11 +4,6 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static 'styles/home.scss' %}" />
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
-<style>
-  body{
-    background-color: rgb(101, 99, 99);
-  }
-</style>
 {% endblock %}
 
 <!-- Title -->
@@ -24,7 +19,7 @@
       <img src="{% static 'images/truffle.png' %}">
     </div> -->
     <div class="log">
-      <img src="{% static 'images/truffle.png' %}" style="height:75px;">
+      <img src="{% static 'images/truffle.png' %}" style="height:75px;cursor:pointer;">
     </div>
       <div class="search-bar">
           <i class="uil uil-search"></i>
@@ -33,7 +28,7 @@
       </div>
       <div class="create">
          <label class="btn btn-primary" for="create-post">Create</label>
-          <div class="profile-photo">
+          <div class="profile-photo" style="cursor:pointer;">
                <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
          </div>
       </div>
@@ -46,7 +41,7 @@
   <div class="container">
       <div class="left">
          <a class="profile">
-          <div class="profile-photo">
+          <div class="profile-photo" style="cursor:pointer;">
           <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
           </div>
           <div class="handle">
@@ -345,13 +340,13 @@
       <div class="right">
           <div class="messages">
               <div class="heading">
-                  <h4>Leaderboard</h4>
+                  <h4 style="color:rgb(107,76,230)">Leaderboard</h4>
 
               </div>
               <!-- SEARCH BAR -->
               <div class="search-bar">
                   <i class="uil uil-search"></i>
-                  <input type="search" placeholder="Search messages" id="message-search">
+                  <input type="search" placeholder="Search people" id="message-search">
 
               </div>
              <!-- MESSAGE -->
@@ -392,7 +387,7 @@
 
       <!-- FRIEND REQUESTS -->
       <div class="friend-requests">
-          <h4>Requests</h4>
+          <h4 style="color:rgb(107,76,230)">Requests</h4>
           <div class="request">
               <div class="ingo">
                   <div class="profile-photo">
