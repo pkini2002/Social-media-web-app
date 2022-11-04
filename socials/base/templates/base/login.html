@@ -1,49 +1,56 @@
-{% extends 'main.html' %}
+<!-- {% extends 'main.html' %} -->
 {% load static %} 
-
 {% block styles %}
-<link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+<!-- Replace {name} with the respective css file -->
+<link rel="stylesheet" href="{% static 'styles/signup.scss' %}" />
 {% endblock %}
 
-
-<!-- Title -->
-{% block title %}
-<title>Login</title>
-{% endblock %}
-
-{% load crispy_forms_tags %}
 {% block content %} 
-
-
-<div class="container">
-    <div class="row mt-5 pt-5">
-        <div class="col-md-4 offset-md-4">
-                <!-- {% for message in messages %}
-                <div class="alert alert-success">
-                {{ message }}
-                </div>
-                {% endfor %} -->
-         <div class="card shadow hover01" style=" width:150%; justify-content:center; align-items:center;" data-tilt>
-                <div class="card-body">
-                <h3 class="sub-text">Login</h3>
-                <p class="under-text">Enter your credentials to access your account</p>
-
-                <hr>
-                <form method="POST" class="form">
-                    {% csrf_token %}
-                        {{form|crispy}}
-                        <input class="btn btn-success btn-block mt-5" type="submit" value="Login">
-                        <p class="signup">Don't have an account? <span><a href="{% url 'signup' %}">Sign up</a></span></p>
-                        <p class="forgot-password">
-                            <a href="">Forgot password?</a>
-                        </p>
-                    </form>
-                    </div>
-                </div>
-            </div>
+<div class="container"
+id="container">
+<div class="form-container sign-up-container">
+    <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+            <a href="#" class="social">
+                <i class="fab fa-google-plus-g"></i>
+            </a>
         </div>
+        <span>or use your your email for registration</span>
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email" class="input" />
+    <button>Sign Up</button>
+    </form>
+</div>
+<div class="form-container sign-in-container">
+    <form action="#">
+        <h1 style="color:rgb(107,76,230)" style="position:relative;bottom:15px;">Sign in</h1>
+        <input type="email" placeholder="Email" />
+        <br>
+        <input type="password" placeholder="Password" />
+        <a href="#">Forgot your password?</a>
+        <button>Sign In</button>
+    </form>
+
+</div>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="overlay-panel overlay-left">
+            <h1>Welcome Back User!</h1>
+            <p>Login to stay connected</p>
+            <button class="ghost" id="signIn">Login</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+            <h1>Not a User?</h1>
+            <p>Enter your personal details to Sign Up</p>
+            <button class="ghost" id="'signUp">
+                <a href="{% url 'signup' %}" style="text-decoration:none;color:#fff;">
+                Sign Up
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
 </div>
 
-<script src="{% static 'scripts/vanilla-tilt.js' %}"></script>
 {% endblock %}
-

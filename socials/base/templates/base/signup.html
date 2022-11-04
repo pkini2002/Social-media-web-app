@@ -1,90 +1,58 @@
-{% extends 'main.html' %}
+<!-- {% extends 'main.html' %} -->
 {% load static %} 
 {% block styles %}
 <!-- Replace {name} with the respective css file -->
-<link rel="stylesheet" href="{% static 'styles/signup.css' %}" />
+<link rel="stylesheet" href="{% static 'styles/signup.scss' %}" />
 {% endblock %}
 
 {% block content %} 
-<!-- Add code from body here -->
-<div class="container left">
-    <form action="{% url 'signup' %}" method="POST" class="form-container">
-             {% csrf_token %}
-             <div class="row">
-                <div class="col-md-7 shadow left mt-3 hover01">
-                 <h2 class="heading mt-5">Sign Up</h2>
-                 <div class="input-box">
-                    <input
-                      type="text"
-                      id="username"
-                      placeholder="Enter Username"
-                      name="username" class="form-1"/>  
-                  </div>
-
-                  <div class="input-box">
-                    <input
-                      type="email"
-                      id="email"
-                      placeholder="Enter Your Email"
-                      name="email" class="form-1"/>
-                  </div>
-
-                  <div class="input-box">
-                    <input
-                      type="password"
-                      id="password"
-                      placeholder="Enter Your Password"
-                      name="password" class="form-1"/>
-                  </div>
-
-                  <div class="input-box">
-                    <input
-                      type="password"
-                      id="password"
-                      placeholder="Confirm Password"
-                      name="confirmpassword" class="form-1"/>
-                  </div>
-                  <br />
-
-                  <div style="text-align: center">
-                    <p class="flex">
-                      By creating the account you agree to our
-                      <a href="#" style="color: blue" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms & Privacy</a>
-                    </p>
-            
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Terms and Conditions</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="container"
+id="container">
+<div class="form-container sign-up-container">
+    <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+            <a href="#" class="social">
+                <i class="fab fa-google-plus-g"></i>
+            </a>
         </div>
-        <div class="modal-body">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perspiciatis voluptatem quia officiis provident quis esse autem dolor temporibus, voluptate quisquam tempore sed, expedita fuga. Aperiam ipsa aspernatur hic reiciendis!
+        <span>or use your your email for registration</span>
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email" class="input" />
+    <button>Sign Up</button>
+    </form>
+</div>
+<div class="form-container sign-in-container">
+    <form action="#">
+        <h1 style="color:rgb(107,76,230)" style="position:relative;bottom:15px;">Sign in</h1>
+        <input type="email" placeholder="Email" />
+        <br>
+        <input type="password" placeholder="Password" />
+        <br>
+        <input type="password" placeholder="Confirm Password" />
+        <a href="#">Forgot your password?</a>
+        <button>Sign In</button>
+    </form>
+
+</div>
+<div class="overlay-container">
+    <div class="overlay">
+        <div class="overlay-panel overlay-left">
+            <h1>Welcome Back User!</h1>
+            <p>Login to stay connected</p>
+            <button class="ghost" id="signIn">Sign In</button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="overlay-panel overlay-right">
+            <h1>Not a User?</h1>
+            <p>Enter your personal details to Sign Up</p>
+            <button class="ghost" id="'signUp">
+              <a href="{% url 'login' %}" style="text-decoration:none;color:#fff;">
+                Login
+                </a>
+            </button>
         </div>
-      </div>
     </div>
-  </div>
- </p>
-</div>
-              
-<button class="btn btn-success signup mt-2" type="submit">Sign Up</button>
-    <div>
-    <p style="text-align: center; margin-top: 20px; margin-left: 300px;">
-        Already a user?<a href="{% url 'login' %}"
-        style="color: rgb(62, 156, 255)"> Login here</a>
-    </p>
 </div>
 </div>
 
-<div class="col-md-5 right">
-    <img src="{% static 'images/signup.png' %}" class="rocket-img">
-</div>
-</div>
-</form>
-</div>
 {% endblock %}
