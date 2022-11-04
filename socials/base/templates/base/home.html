@@ -37,7 +37,7 @@
 
 <!-- MAIN -->
 
-<main>
+<main style="background-color:rgb(244, 234, 234); padding-top: 40px;">
   <div class="container">
       <div class="left">
          <a class="profile">
@@ -136,7 +136,13 @@
                   <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
               </div>
               <input type="text" placeholder="What's on your mind, Diana?" id="create-post">
+              <label for="file">
+                <i class="fa-solid fa-upload" style="color:rgb(107,76,230);padding-right: 20px;"></i>
+                <input type="file" id="file" style="display: none" name="image" accept="image/gif,image/jpeg,image/jpg,image/png" multiple="" data-original-title="upload photos">
+              </label>
               <input type="submit" value="Post" class="btn btn-primary">
+
+             
           </form>
 
           <!-- FEED -->
