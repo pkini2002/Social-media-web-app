@@ -1,8 +1,14 @@
-{% extends 'main.html' %}
+<!-- {% extends 'main.html' %} -->
 {% load static %} 
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+<link rel="stylesheet" href="{% static 'styles/home.scss' %}" />
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+<style>
+  body{
+    background-color: rgb(101, 99, 99);
+  }
+</style>
 {% endblock %}
 
 <!-- Title -->
@@ -11,269 +17,517 @@
 {% endblock %}
 
 {% block content %} 
-<div class="row">
-    <div class="col column-1">
 
-      <div class="card profile-card" style="margin-left:10px; margin-top: 40px;">
-        <div class="card-title section-heading" style=" font-weight: bold;font-size: 25px;  color:#fff;text-align: center;margin-bottom: var(--bs-card-title-spacer-y);">Angela Catherine</div>
-        <div class="card-body">
-          <span class="badge text-bg-danger" style="margin-bottom: 20px;margin-left:80px;">Rank 130</span>
-          <ul class="status">
-            <li class="group">
-              <span class="status-value">532</span>
-              <span class="status-text">Posts</span>
-            </li>
-      
-            <li class="group">
-              <span class="status-value">1.5m</span>
-              <span class="status-text">Followers</span>
-            </li>
-      
-            <li class="group last">
-              <span class="status-value">423</span>
-              <span class="status-text">Following</span>
-            </li>
-          </ul>
-          <button class="btn btn-danger">
-            <a href="{% url 'profileUpdate' %}" style="text-decoration:none;color: aliceblue;">
-             Update Profile
-            </a>
-          </button>
-        </div>
-      </div>
-
-
-      <!-- Leaderboard -->
-        <div class="container con">
-            <div class="leaderboard">
-                <div class="head">
-                    <i class="fas fa-crown"></i>
-                    <h3 class="leaderboard-heading">Most active users</h3>
-                </div>
-                <div class="body">
-                    <ol>
-                        <li>
-                            <mark>Jerry Wood</mark>
-                            <small>948</small>
-                        </li>
-                        <li>
-                            <mark>Brandon Barnes</mark>
-                            <small>750</small>
-                        </li>
-                        <li>
-                            <mark>Raymond Knight</mark>
-                            <small>684</small>
-                        </li>
-                        <li>
-                            <mark>Trevor McCormick</mark>
-                            <small>335</small>
-                        </li>
-                        <li>
-                            <mark>Andrew Fox</mark>
-                            <small>296</small>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <hr>
-        <div>
-          <h3 class="statistics">Statistics 📊</h3>
-          <img src="{% static 'images/posts/pie-chart.png' %}" class="card-img-top posts1" alt="..." style="width:350px;">
-        </div>
-      </div>
-    
-<div class="col-6">
-<div class="card post-item container">
-    <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
-    <div class="card-body">
-      <p class="card-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde similique facere fugiat voluptate non ipsum ad tempora, ab esse dolores in alias sapiente numquam! Magni, facere fuga. Aut, nisi.</p>
-    </div>
-    <span class="like">
-        <div class="col-6">
-        <i class="fa-regular fa-heart fa-2x"></i>
-        <i class="fa-regular fa-comment fa-2x"></i>
-        </div>
-
-        <div class="col-6">
-        <span class="author">
-        <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
-        <button class="profile">
-          <a href="{% url 'otherprofile' %}" style="text-decoration:none;color:#fff;">
-            View profile
-            </a>
-        </button>
-         </span>
-        </div>
-    </span>
-    <a href="#" class="comment">View Comments 👈🏻</a>
-  </div>
-
-  <div class="card post-item container">
-    <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
-    <div class="card-body">
-      <p class="card-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde similique facere fugiat voluptate non ipsum ad tempora, ab esse dolores in alias sapiente numquam! Magni, facere fuga. Aut, nisi.</p>
-    </div>
-    <span class="like">
-        <div class="col-6">
-        <i class="fa-regular fa-heart fa-2x"></i>
-        <i class="fa-regular fa-comment fa-2x"></i>
-        </div>
-
-        <div class="col-6">
-        <span class="author">
-        <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
-        <button class="profile">
-          <a href="{% url 'otherprofile' %}" style="text-decoration:none;color:#fff;">
-          View profile
-          </a>
-        </button>
-         </span>
-        </div>
-    </span>
-    <a href="#" class="comment">View Comments 👈🏻</a>
-  </div>
-
-  <div class="card post-item container">
-    <img src="{% static 'images/posts/photo-1.jpg' %}" class="card-img-top posts" alt="...">
-    <div class="card-body">
-      <p class="card-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde similique facere fugiat voluptate non ipsum ad tempora, ab esse dolores in alias sapiente numquam! Magni, facere fuga. Aut, nisi.</p>
-    </div>
-    <span class="like">
-        <div class="col-6">
-        <i class="fa-regular fa-heart fa-2x"></i>
-        <i class="fa-regular fa-comment fa-2x"></i>
-        </div>
-
-        <div class="col-6">
-        <span class="author">
-        <span class="badge text-bg-danger text-badge">Posted by Albert Powell</span>
-        <button class="profile">
-          <a href="{% url 'otherprofile' %}" style="text-decoration:none;color:#fff;">
-            View profile
-            </a>
-        </button>
-         </span>
-        </div>
-    </span>
-    <a href="#" class="comment">View Comments 👈🏻</a>
-  </div>
-</div>
-
-<div class="col">
-  <div class="container search-section">
-    <h3 class="search-heading">Search Your Friends</h3>
-    <form>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-danger w-100" style="margin-top:10px;" type="submit">Search</button>
-      </form>
-  </div>
-  <hr>
-  <h3 class="mt-3 search-heading mt-6">People also followed</h3>
+<nav>
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body profile-card">
-                <h5 class="card-title title1" style="overflow-y:hidden;">Dennis Ritchie</h5>
-                <p class="card-text text1">Standup Comedian</p>
-                <button class="btn btn-danger">Follow</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- <div style="height:50px;">
+      <img src="{% static 'images/truffle.png' %}">
+    </div> -->
+    <div class="log">
+      <img src="{% static 'images/truffle.png' %}" style="height:75px;">
     </div>
-   
+      <div class="search-bar">
+          <i class="uil uil-search"></i>
+          <input type="search" placeholder="Search for creators,
+          inspirations, and projects">
+      </div>
+      <div class="create">
+         <label class="btn btn-primary" for="create-post">Create</label>
+          <div class="profile-photo">
+               <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
+         </div>
+      </div>
+  </div>
+</nav>
 
-    <div class="row">
-      <div class="col">
-        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body profile-card">
-                <h5 class="card-title title1" style="overflow-y:hidden;">Dennis Ritchie</h5>
-                <p class="card-text text1">Standup Comedian</p>
-                <button class="btn btn-danger">Follow</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- MAIN -->
 
-    <div class="row">
-      <div class="col">
-        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body profile-card">
-                <h5 class="card-title title1" style="overflow-y:hidden;">Dennis Ritchie</h5>
-                <p class="card-text text1">Standup Comedian</p>
-                <button class="btn btn-danger">Follow</button>
-              </div>
-            </div>
+<main>
+  <div class="container">
+      <div class="left">
+         <a class="profile">
+          <div class="profile-photo">
+          <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
           </div>
-        </div>
-      </div>
-    </div>
+          <div class="handle">
+              <h4 style="text-decoration: none;">Diana Ayi</h4>
+              <p class="text-muted">
+                  @dayi
+              </p>
+          </div>
+         </a>
 
-    <div class="row">
-      <div class="col">
-        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..."  style="height:150px;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body profile-card">
-                <h5 class="card-title title1" style="overflow-y:hidden;">Dennis Ritchie</h5>
-                <p class="card-text text1">Standup Comedian</p>
-                <button class="btn btn-danger">Follow</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+         <!-- sidebar -->
+         <div class="sidebar">
+          <a class="menu-item active">
+              <span><i class="uil uil-home"></i></span><h3>Home</h3>
+          </a>
+          <a class="menu-item">
+              <span><i class="uil uil-compass"></i></span><h3>Explore</h3>
+          </a>
+              <a class="menu-item" id="notifications">
+              <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span><h3>Notifications</h3>
 
-    <div class="row">
-      <div class="col col-xs">
-        <div class="card mb-3" style="max-width: 400px; max-height: 250px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'images/friends/img-1.jpg' %}" class="img-fluid rounded-start follow-img" alt="..." style="height:150px;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body profile-card">
-                <h5 class="card-title title1" style="overflow-y:hidden;">Dennis Ritchie</h5>
-                <p class="card-text text1">Standup Comedian</p>
-                <button class="btn btn-danger">Follow</button>
+              <!-- notification popup -->
+              <div class="notifications-popup">
+                  <div>
+                      <div class="profile-photo">
+                          <img src="{% static 'images/home/profile-2.jpg' %}" alt="profile-2">
+              
+                      </div>
+                      <div class="notification-body">
+                          <b>Keke Benjamin</b> accepted your friend request
+                          <small class="text-muted">2 DAYS AGO</small>
+                      </div>
+                  </div>
+                  <div>
+                      <div class="profile-photo">
+                          <img src="{% static 'images/home/profile-3.jpg' %}" alt="profile-3">
+              
+                      </div>
+                      <div class="notification-body">
+                          <b>Keke Benjamin</b> commented on your post
+                          <small class="text-muted">1 HOUR AGO</small>
+                      </div>
+                  </div>
+                  <div>
+                      <div class="profile-photo">
+                          <img src="{% static 'images/home/profile-4.jpg' %}" alt="profile-4">
+              
+                      </div>
+                      <div class="notification-body">
+                          <b>Doris Y Lartley</b> commented on a post you are tagged in
+                          <small class="text-muted">4 MINUTES AGO</small>
+                      </div>
+                  </div>
+                  <div>
+                      <div class="profile-photo">
+                          <img src="{% static 'images/home/profile-5.jpg' %}" alt="profile-5">
+              
+                      </div>
+                      <div class="notification-body">
+                          <b>Donald Trump</b> commented on your post
+                          <small class="text-muted">30 MINUTES AGO</small>
+                      </div>
+                  </div>
+
               </div>
-            </div>
-          </div>
-        </div>
+              <!-- end of notification popup -->
+              </a>
+              <a class="menu-item" id="messages-notifications">
+              <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Leaderboard</h3>
+              </a>
+              <a class="menu-item">
+              <span><i class="uil uil-bookmark"></i></span><h3>Profile</h3>
+              </a>
+              <a class="menu-item">
+              <span><i class="uil uil-chart-line"></i></span><h3>Analytics</h3>
+              </a>
+              <a class="menu-item" id="theme">
+              <span><i class="uil uil-palette"></i></span><h3>Theme</h3>
+              </a>
+         </div>
+         <!-- end of sidebar -->
+         <label for="create-post" class="btn btn-primary">Create Post</label>
       </div>
-    </div>
-    <button class="btn btn-outline-danger w-100" style="margin-top:10px;" type="submit">View More</button>
-    
+      <!-- END OF LEFT -->
+      <div class="middle">
+          <!-- STORIES -->
+
+          <!-- END OF STORIES -->
+
+          <form class="create-post">
+              <div class="profile-photo">
+                  <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
+              </div>
+              <input type="text" placeholder="What's on your mind, Diana?" id="create-post">
+              <input type="submit" value="Post" class="btn btn-primary">
+          </form>
+
+          <!-- FEED -->
+          <div class="feeds">
+              <!-- FEED 1 -->
+              <div class="feed">
+                  <div class="head">
+                      <div class="user">
+                          <div class="profile-photo">
+                              <img src="{% static 'images/home/profile-13.jpg' %}" alt="profile-13">
+                          </div>
+                          <div class="ingo">
+                              <h3>Lana Rose</h3>
+                              <small>Dubai, 15 MINUTES AGO</small>
+                          </div>
+                          
+                      </div>
+                      <span class="edit">
+                          <i class="uil uil-ellipsis-h"></i>
+                      </span>
+
+                  </div>
+                  <div class="photo">
+                      <img src="{% static 'images/home/feed-1.jpg' %}" alt="feed-1">
+
+                  </div>
+                  <div class="action-buttons">
+                      <div class="interaction-buttons">
+                              <span><i class="uil uil-heart"></i></span>
+                                  <span><i class="uil uil-comment-dots"></i></span>
+                                  <!-- <span><i class="uil uil-share-alt"></i> -->
+                              </div>
+                      <div class="bookmark">
+                          <span><i class="uil uil-bookmark-full"></i>
+
+                      </div>
+                  </div>
+
+                  <div class="liked-by">
+                      <span><img src="{% static 'images/home/profile-10.jpg' %}" alt="profile-10"></span>
+                      <span><img src="{% static 'images/home/profile-4.jpg' %}" alt="profile-4"></span>
+                      <span><img src="{% static 'images/home/profile-15.jpg' %}" alt="profile-15"></span>
+                      <p>Liked by <b>Ernest Achiever</b> and <b>2,323 others</b></p>
+
+                  </div>
+                  <div class="caption">
+                      <p><b>Lana Rose</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#lifestyle</span></p>
+                  </div>
+                  <div class="comments text-muted">View all 277 comments</div>
+
+              </div>
+
+              <!-- FEED 2-->
+              <div class="feed">
+                  <div class="head">
+                      <div class="user">
+                          <div class="profile-photo">
+                              <img src="{% static 'images/home/profile-16.jpg' %}" alt="profile-16">
+                          </div>
+                          <div class="ingo">
+                              <h3>Benjamin Dwayne</h3>
+                              <small>Miami, 2 HOURS AGO</small>
+                          </div>
+                          
+                      </div>
+                      <span class="edit">
+                          <i class="uil uil-ellipsis-h"></i>
+                      </span>
+
+                  </div>
+                  <div class="photo">
+                      <img src="{% static 'images/home/feed-2.jpg' %}" alt="feed-2">
+
+                  </div>
+                  <div class="action-buttons">
+                      <div class="interaction-buttons">
+                              <span><i class="uil uil-heart"></i></span>
+                                  <span><i class="uil uil-comment-dots"></i></span>
+                                  <!-- <span><i class="uil uil-share-alt"></i> -->
+                              </div>
+                      <div class="bookmark">
+                          <span><i class="uil uil-bookmark-full"></i>
+
+                      </div>
+                  </div>
+
+                  <div class="liked-by">
+                      <span><img src="{% static 'images/home/profile-10.jpg' %}"></span>
+                      <span><img src="{% static 'images/home/profile-4.jpg' %}"></span>
+                      <span><img src="{% static 'images/home/profile-15.jpg' %}"></span>
+                      <p>Liked by <b>Lana Rose</b> and <b>1,675 others</b></p>
+
+                  </div>
+                  <div class="caption">
+                      <p><b>Benjamin Dwayne</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#travel</span></p>
+                  </div>
+                  <div class="comments text-muted">View all 100 comments</div>
+
+              </div>
+
+              <!-- FEED 3 -->
+              <div class="feed">
+                  <div class="head">
+                      <div class="user">
+                          <div class="profile-photo">
+                              <img src="{% static 'images/home/profile-12.jpg' %}">
+                          </div>
+                          <div class="ingo">
+                              <h3>Malik Berry</h3>
+                              <small>Ghana, 1 MINUTE AGO</small>
+                          </div>
+                          
+                      </div>
+                      <span class="edit">
+                          <i class="uil uil-ellipsis-h"></i>
+                      </span>
+
+                  </div>
+                  <div class="photo">
+                      <img src="{% static 'images/home/feed-3.jpg' %}">
+
+                  </div>
+                  <div class="action-buttons">
+                      <div class="interaction-buttons">
+                              <span><i class="uil uil-heart"></i></span>
+                                  <span><i class="uil uil-comment-dots"></i></span>
+                                  <!-- <span><i class="uil uil-share-alt"></i> -->
+                              </div>
+                      <div class="bookmark">
+                          <span><i class="uil uil-bookmark-full"></i>
+
+                      </div>
+                  </div>
+
+                  <div class="liked-by">
+                      <span><img src="{% static 'images/home/profile-10.jpg' %}"></span>
+                      <span><img src="{% static 'images/home/profile-4.jpg' %}"></span>
+                      <span><img src="{% static 'images/home/profile-15.jpg' %}"></span>
+                      <p>Liked by <b>Donald Trump</b> and <b>6,925 others</b></p>
+
+                  </div>
+                  <div class="caption">
+                      <p><b>Malik Berry</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#fashion</span></p>
+                  </div>
+                  <div class="comments text-muted">View all 156 comments</div>
+
+              </div>
+
+              <!-- FEED 4 -->
+              <div class="feed">
+                  <div class="head">
+                      <div class="user">
+                          <div class="profile-photo">
+                              <img src="{% static 'images/home/profile-14.jpg' %}">
+                          </div>
+                          <div class="ingo">
+                              <h3>Chris Brown</h3>
+                              <small>Los Angeles, 10 HOURS AGO</small>
+                          </div>
+                          
+                      </div>
+                      <span class="edit">
+                          <i class="uil uil-ellipsis-h"></i>
+                      </span>
+
+                  </div>
+                  <div class="photo">
+                      <img src="{% static 'images/home/feed-5.jpg' %}">
+
+                  </div>
+                  <div class="action-buttons">
+                      <div class="interaction-buttons">
+                              <span><i class="uil uil-heart"></i></span>
+                                  <span><i class="uil uil-comment-dots"></i></span>
+                                  <!-- <span><i class="uil uil-share-alt"></i> -->
+                              </div>
+                      <div class="bookmark">
+                          <span><i class="uil uil-bookmark-full"></i>
+
+                      </div>
+                  </div>
+
+                  <div class="liked-by">
+                      <span><img src="{% static 'images/home/profile-10.jpg' %}"></span>
+                      <span><img src="{% static 'images/home/profile-4.jpg' %}"></span>
+                      <span><img src="{% static 'images/home/profile-15.jpg' %}"></span>
+                      <p>Liked by <b>Benjamin Dwayne</b> and <b>10,509 others</b></p>
+
+                  </div>
+                  <div class="caption">
+                      <p><b>Lana Rose</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#skateboarding</span></p>
+                  </div>
+                  <div class="comments text-muted">View all 1,277 comments</div>
+
+              </div>
+          </div>
+          <!-- END OF FEEDS -->
+      </div>
+      <!-- END OF MIDDLE  -->
+          <!-- RIGHT -->
+      <div class="right">
+          <div class="messages">
+              <div class="heading">
+                  <h4>Leaderboard</h4>
+
+              </div>
+              <!-- SEARCH BAR -->
+              <div class="search-bar">
+                  <i class="uil uil-search"></i>
+                  <input type="search" placeholder="Search messages" id="message-search">
+
+              </div>
+             <!-- MESSAGE -->
+             <div class="message">
+             <div class="profile-photo">
+              <img src="{% static 'images/home/profile-10.jpg' %}">                       
+          </div>
+          <div class="message-body">
+              <h5>Angela Mathews</h5>
+              <p class="text-muted">Just woke up bruh</p>
+          </div>
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="message">
+              <div class="profile-photo">
+               <img src="{% static 'images/home/profile-6.jpg' %}">                       
+           </div>
+           <div class="message-body">
+               <h5>Juliet Makarey</h5>
+               <!-- <p class="text-bold">2 new messages</p> -->
+           </div>
+           </div>
+
+           <!-- MESSAGE -->
+           <div class="message">
+              <div class="profile-photo">
+               <img src="{% static 'images/home/profile-7.jpg' %}">  
+               <!-- <div class="active"></div>                      -->
+           </div>
+           <div class="message-body">
+               <h5>Chantel Msiza</h5>
+               <p class="text-muted">Birthday tomorrow</p>
+           </div>
+           </div>
+      </div>
+      <!-- END OF MESSAGES -->
+
+      <!-- FRIEND REQUESTS -->
+      <div class="friend-requests">
+          <h4>Requests</h4>
+          <div class="request">
+              <div class="ingo">
+                  <div class="profile-photo">
+                      <img src="{% static 'images/home/profile-13.jpg' %}">
+                          
+                  </div>
+                  <div>
+                      <h5>Hajia Bintu</h5>
+                      <p class="text-muted">
+                          8 mutual friends
+                      </p>
+                      
+                      </div>
+                  </div>
+                  <div class="action">
+                      <button class="btn btn-primary">
+                          Accept
+                      </button>
+                      <button class="btn">
+                          Decline
+                      </button>
+              </div>
+
+          </div>
+          <!-- FRIEND REQUEST 2 -->
+          <div class="request">
+              <div class="ingo">
+                  <div class="profile-photo">
+                      <img src="{% static 'images/home/profile-17.jpg' %}">
+                          
+                  </div>
+                  <div>
+                      <h5>Jacqueline Fernandes</h5>
+                      <p class="text-muted">
+                          8 mutual friends
+                      </p>
+                      
+                      </div>
+                  </div>
+                  <div class="action">
+                      <button class="btn btn-primary">
+                          Accept
+                      </button>
+                      <button class="btn">
+                          Decline
+                      </button>
+              </div>
+
+          </div>
+          <!-- FRIEND REQUEST 3 -->
+          <div class="request">
+              <div class="ingo">
+                  <div class="profile-photo">
+                      <img src="{% static 'images/home/profile-15.jpg' %}">
+                          
+                  </div>
+                  <div>
+                      <h5>Jennifer Lawrence</h5>
+                      <p class="text-muted">
+                          8 mutual friends
+                      </p>
+                      
+                      </div>
+                  </div>
+                  <div class="action">
+                      <button class="btn btn-primary">
+                          Accept
+                      </button>
+                      <button class="btn">
+                          Decline
+                      </button>
+              </div>
+
+          </div>
+      </div>
+
+      </div>
+      <!-- END OF RIGHT -->
+  </div>
+</main>
+
+<!-- THEME CUSTOMIZATION -->
+<div class="customize-theme">
+  <div class="card">
+      <h2>Customize your view</h2>
+      <p class="text-muted">Manage your font size,color and background</p>
+
+      <!-- FONT SIZES -->
+      <div class="font-size">
+          <h4>Font size</h4>
+          <div>
+              <h6>Aa</h6>
+              <div class="choose-size">
+                  <span class="font-size-1"></span>
+                  <span class="font-size-2 active"></span>
+                  <span class="font-size-3"></span>
+                  <span class="font-size-4"></span>
+                  <span class="font-size-5"></span>
+              </div>
+              <h3>Aa</h3>
+          </div>
+      </div>
+      <!-- PRIMARY COLORS -->
+      <div class="color">
+          <h4>Color</h4>
+          <div class="choose-color">
+          <span class="color-1 active"></span>
+          <span class="color-2"></span>
+          <span class="color-3"></span>
+          <span class="color-4"></span>
+          <span class="color-5"></span>
+      </div>
+  </div>
+
+  <!-- BACKGORUND COLORS -->
+  <div class="background">
+      <h4>Background</h4>
+      <div class="choose-bg">
+          <div class="bg-1 active">
+              <span></span>
+              <h5 for="bg-1">Light</h5>
+          </div>
+          <div class="bg-2">
+              <span></span>
+              <h5>Dim</h5>
+          </div>
+          <div class="bg-3">
+              <span></span>
+              <h5 for="bg-3">Lights Out</h5>
+          </div>
+      </div>
   </div>
 </div>
-
 </div>
 
-
+<script src="{% static 'scripts/index.js' %}" type="text/javascript"></script>
 
 {% endblock %}

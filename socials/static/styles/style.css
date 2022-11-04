@@ -1,5 +1,5 @@
 /* All common styles will be written here */
-.navigation{
+/* .navigation{
     background: rgba(13, 13, 13, 0.2);
     box-shadow: 0 4px 50px rgba(0,0,0,0.6);
     backdrop-filter: blur(3px);
@@ -13,13 +13,6 @@
     color: #000;
 }
 
-body{
-    background: #3D7EAA;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FFE47A, #6a9aba);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FFE47A, #679cc0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
 .nav-logo{
-    width: 150px;
-    height: 150px;
-}
+    height: 60px;
+} */
