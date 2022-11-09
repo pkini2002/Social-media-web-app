@@ -27,6 +27,11 @@
           inspirations, and projects">
       </div>
       <div class="create">
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">logout</a>
+       {% else %}
+      <a href="{% url 'login' %}">login</a>
+       {% endif %}
          <label class="btn btn-primary" for="create-post">Create</label>
           <div class="profile-photo" style="cursor:pointer;">
                <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
@@ -123,7 +128,7 @@
               </a>
          </div>
          <!-- end of sidebar -->
-         <label for="create-post" class="btn btn-primary">Create Post</label>
+         <label for="create-post" class="btn btn-primary mb-4">Create Post</label>
       </div>
       <!-- END OF LEFT -->
       <div class="middle">

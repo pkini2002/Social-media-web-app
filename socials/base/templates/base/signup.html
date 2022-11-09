@@ -24,14 +24,14 @@ id="container">
 </div>
 <div class="form-container sign-in-container">
     <form action="#">
-        <h1 style="color:rgb(107,76,230)" style="position:relative;bottom:15px;">Sign in</h1>
-        <input type="email" placeholder="Email" />
+        <h1 style="color:rgb(107,76,230)" style="position:relative;bottom:15px;">Sign Up</h1>
+        <input type="email" placeholder="Email" name="email" />
         <br>
-        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Password" name="password" />
         <br>
-        <input type="password" placeholder="Confirm Password" />
+        <!-- <input type="password" placeholder="Confirm Password" name="confirm-password" /> -->
         <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        <button>Sign Up</button>
     </form>
 
 </div>
@@ -43,8 +43,8 @@ id="container">
             <button class="ghost" id="signIn">Sign In</button>
         </div>
         <div class="overlay-panel overlay-right">
-            <h1>Not a User?</h1>
-            <p>Enter your personal details to Sign Up</p>
+            <h1>Already a User?</h1>
+            <p>Enter your personal details to Sign In</p>
             <button class="ghost" id="'signUp">
               <a href="{% url 'login' %}" style="text-decoration:none;color:#fff;">
                 Login
