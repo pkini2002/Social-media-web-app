@@ -8,11 +8,12 @@
 {% block content %} 
 <div class="container">
 <div class="form-container sign-in-container">
-    <form action="#">
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
         <h1 style="color:rgb(107,76,230)" style="position:relative;bottom:15px;">Sign in</h1>
-        <input type="email" placeholder="Email" />
+        <input type="text" placeholder="Username" name="username" />
         <br>
-        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Password" name="password" />
         <a href="#">Forgot your password?</a>
         <button>Sign In</button>
     </form>

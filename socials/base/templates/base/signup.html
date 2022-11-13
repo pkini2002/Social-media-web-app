@@ -23,8 +23,11 @@ id="container">
     </form>
 </div>
 <div class="form-container sign-in-container">
-    <form action="#">
+    <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
         <h1 style="color:rgb(107,76,230)" style="position:relative;bottom:15px;">Sign Up</h1>
+        <input type="text" placeholder="Username" name="username" />
+        <br>
         <input type="email" placeholder="Email" name="email" />
         <br>
         <input type="password" placeholder="Password" name="password" />

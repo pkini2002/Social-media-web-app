@@ -24,46 +24,50 @@ def profile(request):
 def login(request):
     if request.user.is_authenticated:
         return redirect('/')
-    if request.method == 'POST': 
-        login_email=request.POST['email']
-        login_password=request.POST['password']
-        user = authenticate(request, email = login_email, password = login_password)
+    if request.method=="POST":
+        login_username=request.POST.get('username', None)
+        user_password=request.POST["password"]
+        user = authenticate(request,username=login_username, password = user_password)
         if user is not None:
             auth_login(request, user)
             messages.add_message(request, messages.INFO, 'You have successfully logged in.')
-            return redirect('home')
+            return redirect('/')
+
         else:
             messages.add_message(request, messages.INFO, 'Invalid username or password.')
             return render(request,"base/login.html")
+
     return render(request,"base/login.html")
 
-
 def signup(request):
-    context={}
     if request.user.is_authenticated:
         return redirect('/')
     if request.method == 'POST': 
-        User = get_user_model()
         email=request.POST['email']
         password=request.POST['password']
+        username=request.POST['username']
         email=email.rstrip()
 
-        if email == '' or password == '':
+        if email == '' or password == '' or username == '':
             messages.error(request,"Please fill all the fields.")
-            return render(request,"base/signup.html",context)
+            return render(request,"base/signup.html")
+        
+        elif User.objects.filter(username=username).exists(): 
+            messages.add_message(request, messages.INFO, 'Username already exists.')
+            return render(request,"base/signup.html")
         
         elif User.objects.filter(email=email).exists():
             messages.add_message(request, messages.INFO, 'Email already exists.')
-            return render(request,"base/signup.html",context)
+            return render(request,"base/signup.html")
 
         else :
-            user = User.objects.create(email=email,password=make_password(password))
+            user = User.objects.create(email=email, username=username, password=make_password(password))
             user.save() 
             auth_login(request, user)    
             messages.add_message(request, messages.INFO, 'You have successfully signed up.')
             return redirect('/')
     else:
-        return render(request,"base/signup.html",context)
+        return render(request,"base/signup.html")
 
 def logout(request):
     auth_logout(request)
