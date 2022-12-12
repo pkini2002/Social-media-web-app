@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 import uuid
 from datetime import datetime
+from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -20,17 +22,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-class Post(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='post_images')
-    caption = models.TextField()
-    created_at = models.DateTimeField(default=datetime.now)
-    no_of_likes = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.user
-
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)
     username = models.CharField(max_length=100)
@@ -44,3 +35,21 @@ class FollowersCount(models.Model):
 
     def __str__(self):
         return self.user
+
+class Post(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    title=models.CharField(max_length=255)
+    image=models.ImageField(null=True,blank=True,upload_to="images/")
+    title_tag=models.CharField(max_length=255,default="")
+    author=models.ForeignKey(User,on_delete=models.CASCADE,default="")
+    caption=RichTextField(blank=True,null=True)
+    #body=models.TextField()
+    post_date=models.DateField(auto_now_add=True)
+    no_of_likes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title + " | " + str(self.author)
+
+    def get_absolute_url(self):
+        return reverse('home')
+
