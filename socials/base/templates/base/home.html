@@ -34,7 +34,7 @@
             <a href="{% url 'add_post' %}" style="color: #fff;text-decoration: none;">Create Post</a>
          </button>
           <div class="profile-photo" style="cursor:pointer;">
-               <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
+               <img src="{{ page_user.profileimg.url }}" alt="profile-1">
          </div>
       </div>
   </div>
@@ -47,12 +47,12 @@
       <div class="left">
          <a class="profile">
           <div class="profile-photo" style="cursor:pointer;">
-          <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
+          <img src="{{ page_user.profileimg.url }}" alt="profile-1">
           </div>
           <div class="handle">
               <h4 style="text-decoration: none;">{{request.user.first_name}}</h4>
               <p class="text-muted">
-                  @dayi
+                  {{request.user.username}}
               </p>
           </div>
          </a>
@@ -65,55 +65,7 @@
           <a class="menu-item">
               <span><i class="uil uil-compass"></i></span><h3>Explore</h3>
           </a>
-              <a class="menu-item" id="notifications">
-              <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span><h3>Notifications</h3>
-
-              <!-- notification popup -->
-              <div class="notifications-popup">
-                  <div>
-                      <div class="profile-photo">
-                          <img src="{% static 'images/home/profile-2.jpg' %}" alt="profile-2">
               
-                      </div>
-                      <div class="notification-body">
-                          <b>Keke Benjamin</b> accepted your friend request
-                          <small class="text-muted">2 DAYS AGO</small>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="profile-photo">
-                          <img src="{% static 'images/home/profile-3.jpg' %}" alt="profile-3">
-              
-                      </div>
-                      <div class="notification-body">
-                          <b>Keke Benjamin</b> commented on your post
-                          <small class="text-muted">1 HOUR AGO</small>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="profile-photo">
-                          <img src="{% static 'images/home/profile-4.jpg' %}" alt="profile-4">
-              
-                      </div>
-                      <div class="notification-body">
-                          <b>Doris Y Lartley</b> commented on a post you are tagged in
-                          <small class="text-muted">4 MINUTES AGO</small>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="profile-photo">
-                          <img src="{% static 'images/home/profile-5.jpg' %}" alt="profile-5">
-              
-                      </div>
-                      <div class="notification-body">
-                          <b>Donald Trump</b> commented on your post
-                          <small class="text-muted">30 MINUTES AGO</small>
-                      </div>
-                  </div>
-
-              </div>
-              <!-- end of notification popup -->
-              </a>
               <a class="menu-item" id="messages-notifications">
               <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Leaderboard</h3>
               </a>
@@ -128,7 +80,9 @@
               </a>
          </div>
          <!-- end of sidebar -->
-         <label for="create-post" class="btn btn-primary mb-4">Create Post</label>
+         <button class="btn btn-primary">
+            <a href="{% url 'add_post' %}" style="color: #fff;text-decoration: none;">Create Post</a>
+         </button>
       </div>
       <!-- END OF LEFT -->
 
@@ -141,7 +95,7 @@
                   <div class="head">
                       <div class="user">
                           <div class="profile-photo">
-                              <img src="{% static 'images/home/profile-13.jpg' %}" alt="profile-13">
+                              <img src="{{ page_user.profileimg.url }}" alt="profile-13" style="width:50px;">
                           </div>
                           <div class="ingo">
                               <h3>{{ post.author }}</h3>
@@ -162,7 +116,6 @@
                       <div class="interaction-buttons">
                               <span><i class="uil uil-heart"></i></span>
                                   <span><i class="uil uil-comment-dots"></i></span>
-                                  <!-- <span><i class="uil uil-share-alt"></i> -->
                               </div>
                       <div class="bookmark">
                           <span><i class="uil uil-bookmark-full"></i>
@@ -374,6 +327,7 @@
   </div>
 </div>
 </div>
+
 
 <script src="{% static 'scripts/index.js' %}" type="text/javascript"></script>
 

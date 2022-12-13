@@ -25,6 +25,12 @@ class HomeView(ListView):
     posts=Post.objects.all()
     ordering = ['-id']
 
+    def get_context_data(self,*args,**kwargs):
+        context=super(HomeView,self).get_context_data(*args,**kwargs)
+        page_user=get_object_or_404(Profile)
+        context["page_user"]=page_user
+        return context
+
 def profile(request):
     context={}
     return render(request,"base/profile.html",context)
@@ -83,21 +89,26 @@ def logout(request):
     auth_logout(request)
     return redirect('/')
 
-def friends(request):
-    context={}
-    return render(request,"base/friends.html",context)
+# def friends(request):
+#     context={}
+#     return render(request,"base/friends.html",context)
+
+class FriendView(ListView):
+    model = Profile
+    template_name = 'base/friends.html'
+    profiles=Profile.objects.all()
+    ordering = ['-id']
+
+    def get_context_data(self,*args,**kwargs):
+        context=super(FriendView,self).get_context_data(*args,**kwargs)
+        page_user=get_object_or_404(Profile)
+        context["page_user"]=page_user
+        return context
+
 
 def error(request):
     context={}
     return render(request,"base/404.html",context)
-
-def post(request):
-    context={}
-    return render(request,"base/post.html",context)
-
-def otherprofile(request):
-    context={}
-    return render(request,"base/Otherprofile.html",context)
 
 class AddPostView(CreateView):
     model = Post
@@ -130,6 +141,22 @@ class ShowProfilePageView(DetailView):
         page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
         context["page_user"]=page_user
         return context
+
+class PasswordsChangeView(PasswordChangeView):
+       form_class= PasswordChangingForm
+       success_url= reverse_lazy('password_success')
+
+def password_success(request):
+    return render(request, 'base/password_success.html', {})
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'base/add_comment.html'
+
+    def form_valid(self,form):
+        form.instance.post_id=self.kwargs['pk']
+        return super().form_valid(form)
 
 
 
