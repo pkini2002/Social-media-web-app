@@ -29,7 +29,10 @@
        {% else %}
       <a href="{% url 'login' %}">login</a>
        {% endif %}
-         <label class="btn btn-primary" for="create-post">Create</label>
+         <!-- <label class="btn btn-primary" for="create-post">Create</label> -->
+         <button class="btn btn-primary">
+            <a href="{% url 'add_post' %}" style="color: #fff;text-decoration: none;">Create Post</a>
+         </button>
           <div class="profile-photo" style="cursor:pointer;">
                <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
          </div>
@@ -47,7 +50,7 @@
           <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
           </div>
           <div class="handle">
-              <h4 style="text-decoration: none;">Diana Ayi</h4>
+              <h4 style="text-decoration: none;">{{request.user.first_name}}</h4>
               <p class="text-muted">
                   @dayi
               </p>
@@ -128,29 +131,12 @@
          <label for="create-post" class="btn btn-primary mb-4">Create Post</label>
       </div>
       <!-- END OF LEFT -->
+
       <div class="middle">
-          <!-- STORIES -->
-
-          <!-- END OF STORIES -->
-
-          <!-- Create post -->
-          <form class="create-post" action="{% url 'home' %}" method="POST" >
-            {% csrf_token %}
-              <div class="profile-photo">
-                  <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
-              </div>
-
-              <input type="text" placeholder="What's on your mind, Diana?" id="create-post" name="post-desc">
-              <label for="file">
-                <i class="fa-solid fa-upload" style="color:rgb(107,76,230);padding-right: 20px;"></i>
-                <input type="file" id="file" style="display: none" name="image" accept="image/gif,image/jpeg,image/jpg,image/png" multiple="" data-original-title="upload photos">
-              </label>             
-              <input type="submit" value="Post" class="btn btn-primary">
-          </form>
-
           <!-- FEED -->
           <div class="feeds">
               <!-- FEED 1 -->
+              {% for post in object_list %}
               <div class="feed">
                   <div class="head">
                       <div class="user">
@@ -158,8 +144,8 @@
                               <img src="{% static 'images/home/profile-13.jpg' %}" alt="profile-13">
                           </div>
                           <div class="ingo">
-                              <h3>Lana Rose</h3>
-                              <small>Dubai, 15 MINUTES AGO</small>
+                              <h3>{{ post.author }}</h3>
+                              <small>{{ post.location }}</small>
                           </div>
                           
                       </div>
@@ -169,7 +155,7 @@
 
                   </div>
                   <div class="photo">
-                      <img src="{% static 'images/home/feed-1.jpg' %}" alt="feed-1">
+                      <img src="{{ post.image.url }}" alt="feed-1">
 
                   </div>
                   <div class="action-buttons">
@@ -192,155 +178,12 @@
 
                   </div>
                   <div class="caption">
-                      <p><b>Lana Rose</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#lifestyle</span></p>
+                      <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>
                   </div>
                   <div class="comments text-muted">View all 277 comments</div>
 
               </div>
-
-              <!-- FEED 2-->
-              <div class="feed">
-                  <div class="head">
-                      <div class="user">
-                          <div class="profile-photo">
-                              <img src="{% static 'images/home/profile-16.jpg' %}" alt="profile-16">
-                          </div>
-                          <div class="ingo">
-                              <h3>Benjamin Dwayne</h3>
-                              <small>Miami, 2 HOURS AGO</small>
-                          </div>
-                          
-                      </div>
-                      <span class="edit">
-                          <i class="uil uil-ellipsis-h"></i>
-                      </span>
-
-                  </div>
-                  <div class="photo">
-                      <img src="{% static 'images/home/feed-2.jpg' %}" alt="feed-2">
-
-                  </div>
-                  <div class="action-buttons">
-                      <div class="interaction-buttons">
-                              <span><i class="uil uil-heart"></i></span>
-                                  <span><i class="uil uil-comment-dots"></i></span>
-                                  <!-- <span><i class="uil uil-share-alt"></i> -->
-                              </div>
-                      <div class="bookmark">
-                          <span><i class="uil uil-bookmark-full"></i>
-
-                      </div>
-                  </div>
-
-                  <div class="liked-by">
-                      <span><img src="{% static 'images/home/profile-10.jpg' %}"></span>
-                      <span><img src="{% static 'images/home/profile-4.jpg' %}"></span>
-                      <span><img src="{% static 'images/home/profile-15.jpg' %}"></span>
-                      <p>Liked by <b>Lana Rose</b> and <b>1,675 others</b></p>
-
-                  </div>
-                  <div class="caption">
-                      <p><b>Benjamin Dwayne</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#travel</span></p>
-                  </div>
-                  <div class="comments text-muted">View all 100 comments</div>
-
-              </div>
-
-              <!-- FEED 3 -->
-              <div class="feed">
-                  <div class="head">
-                      <div class="user">
-                          <div class="profile-photo">
-                              <img src="{% static 'images/home/profile-12.jpg' %}">
-                          </div>
-                          <div class="ingo">
-                              <h3>Malik Berry</h3>
-                              <small>Ghana, 1 MINUTE AGO</small>
-                          </div>
-                          
-                      </div>
-                      <span class="edit">
-                          <i class="uil uil-ellipsis-h"></i>
-                      </span>
-
-                  </div>
-                  <div class="photo">
-                      <img src="{% static 'images/home/feed-3.jpg' %}">
-
-                  </div>
-                  <div class="action-buttons">
-                      <div class="interaction-buttons">
-                              <span><i class="uil uil-heart"></i></span>
-                                  <span><i class="uil uil-comment-dots"></i></span>
-                                  <!-- <span><i class="uil uil-share-alt"></i> -->
-                              </div>
-                      <div class="bookmark">
-                          <span><i class="uil uil-bookmark-full"></i>
-
-                      </div>
-                  </div>
-
-                  <div class="liked-by">
-                      <span><img src="{% static 'images/home/profile-10.jpg' %}"></span>
-                      <span><img src="{% static 'images/home/profile-4.jpg' %}"></span>
-                      <span><img src="{% static 'images/home/profile-15.jpg' %}"></span>
-                      <p>Liked by <b>Donald Trump</b> and <b>6,925 others</b></p>
-
-                  </div>
-                  <div class="caption">
-                      <p><b>Malik Berry</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#fashion</span></p>
-                  </div>
-                  <div class="comments text-muted">View all 156 comments</div>
-
-              </div>
-
-              <!-- FEED 4 -->
-              <div class="feed">
-                  <div class="head">
-                      <div class="user">
-                          <div class="profile-photo">
-                              <img src="{% static 'images/home/profile-14.jpg' %}">
-                          </div>
-                          <div class="ingo">
-                              <h3>Chris Brown</h3>
-                              <small>Los Angeles, 10 HOURS AGO</small>
-                          </div>
-                          
-                      </div>
-                      <span class="edit">
-                          <i class="uil uil-ellipsis-h"></i>
-                      </span>
-
-                  </div>
-                  <div class="photo">
-                      <img src="{% static 'images/home/feed-5.jpg' %}">
-
-                  </div>
-                  <div class="action-buttons">
-                      <div class="interaction-buttons">
-                              <span><i class="uil uil-heart"></i></span>
-                                  <span><i class="uil uil-comment-dots"></i></span>
-                                  <!-- <span><i class="uil uil-share-alt"></i> -->
-                              </div>
-                      <div class="bookmark">
-                          <span><i class="uil uil-bookmark-full"></i>
-
-                      </div>
-                  </div>
-
-                  <div class="liked-by">
-                      <span><img src="{% static 'images/home/profile-10.jpg' %}"></span>
-                      <span><img src="{% static 'images/home/profile-4.jpg' %}"></span>
-                      <span><img src="{% static 'images/home/profile-15.jpg' %}"></span>
-                      <p>Liked by <b>Benjamin Dwayne</b> and <b>10,509 others</b></p>
-
-                  </div>
-                  <div class="caption">
-                      <p><b>Lana Rose</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="hash-tag">#skateboarding</span></p>
-                  </div>
-                  <div class="comments text-muted">View all 1,277 comments</div>
-
-              </div>
+              {% endfor %}
           </div>
           <!-- END OF FEEDS -->
       </div>

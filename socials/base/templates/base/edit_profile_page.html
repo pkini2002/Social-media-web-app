@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+<title>Edit Profile Page</title>
+
+{% block content %}
+{% if user.is_authenticated %}
+<!-- {%  if user.id == profile.user.id  %} -->
+
+    <div class="container shadow p-3 mb-5 bg-body rounded" style="width: 50%;margin-top: 30px;">
+        <h1 style="text-align:center; margin-top:10px; color:#9a35dd;font-weight: bolder;">Edit Profile Page</h1>
+    <div class="form-group" style="font-weight: 600;line-height: 2.5;">
+        
+    
+    <br/>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button class="btn btn-primary btn-block" style="width:200px;position: relative;left:35%;
+            background: linear-gradient(to right,#623dc6 ,#9a35dd );">Update Profile Page</button>
+        </form>
+    </div>
+    </div>
+    <br/><br/>
+
+    <!-- Javascript -->
+    <script>
+         var name="{{ user.first_name }}"
+         document.getElementById("elder").placeholder=name;
+    </script>
+
+{% else %}
+    Login required to view
+{% endif %} 
+
+<!-- {% else %}
+You are not the correct user to edit the page
+{% endif %} -->
+{% endblock %}
