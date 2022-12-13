@@ -98,52 +98,11 @@ def otherprofile(request):
     context={}
     return render(request,"base/Otherprofile.html",context)
 
-class EditProfilePageView(generic.UpdateView):
-    model = Profile
-    template_name='base/edit_profile_page.html'
-    form_class=EditProfileNewForm
-    success_url=reverse_lazy('home')
-
-class ShowProfilePageView(DetailView):
-    model = Profile
-    template_name = 'base/Otherprofile.html'
-
-    def get_context_data(self,*args,**kwargs):
-        # users=Profile.objects.all()
-        context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
-        page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
-        context["page_user"]=page_user
-        return context
-
-class PasswordsChangeView(PasswordChangeView):
-    #    form_class= PasswordChangingForm
-       #form_class= PasswordChangeForm
-       success_url= reverse_lazy('password_success')
-       #success_url= reverse_lazy('home')
-
 class AddPostView(CreateView):
     model = Post
-    # form_class = PostForm
-    template_name = 'add_post.html'
+    form_class = PostForm
+    # fields='__all__'
+    template_name = 'base/add_post.html'
 
-class AddCommentView(CreateView):
-    # model = Comment
-    # form_class = CommentForm
-    template_name = 'base/add_comment.html'
-
-    def form_valid(self,form):
-        form.instance.post_id=self.kwargs['pk']
-        return super().form_valid(form)
-
-class UpdatePostView(UpdateView):
-    model = Post
-    # form_class=EditForm
-    template_name = 'update_post.html'
-    # fields = ['title','title_tag','body']
-
-class DeletePostView(DeleteView):
-    model = Post
-    template_name = 'delete_post.html'
-    success_url = reverse_lazy('home')
 
 

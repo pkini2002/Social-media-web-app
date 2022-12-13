@@ -29,7 +29,10 @@
        {% else %}
       <a href="{% url 'login' %}">login</a>
        {% endif %}
-         <label class="btn btn-primary" for="create-post">Create</label>
+         <!-- <label class="btn btn-primary" for="create-post">Create</label> -->
+         <button class="btn btn-primary">
+            <a href="{% url 'add_post' %}" style="color: #fff;text-decoration: none;">Create Post</a>
+         </button>
           <div class="profile-photo" style="cursor:pointer;">
                <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
          </div>
@@ -129,25 +132,6 @@
       </div>
       <!-- END OF LEFT -->
       <div class="middle">
-          <!-- STORIES -->
-
-          <!-- END OF STORIES -->
-
-          <!-- Create post -->
-          <form class="create-post" action="{% url 'home' %}" method="POST" >
-            {% csrf_token %}
-              <div class="profile-photo">
-                  <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
-              </div>
-
-              <input type="text" placeholder="What's on your mind, Diana?" id="create-post" name="post-desc">
-              <label for="file">
-                <i class="fa-solid fa-upload" style="color:rgb(107,76,230);padding-right: 20px;"></i>
-                <input type="file" id="file" style="display: none" name="image" accept="image/gif,image/jpeg,image/jpg,image/png" multiple="" data-original-title="upload photos">
-              </label>             
-              <input type="submit" value="Post" class="btn btn-primary">
-          </form>
-
           <!-- FEED -->
           <div class="feeds">
               <!-- FEED 1 -->
