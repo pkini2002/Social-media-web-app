@@ -15,11 +15,11 @@
 <div class="container" style="margin-top:20px;">
     <div class="row m-b-r m-t-3"  style="margin-top:40px;">
         <div class="col-md-2 offset-md-1">
-            <img src="https://mdbootstrap.com/images/avatars/img%20(1).jpg" alt="" class="img-circle rounded-circle img-fluid">
+            <img src="{{ page_user.profileimg.url }}" alt="profileimg" class="img-circle rounded-circle img-fluid" style="height: 180px; width: 150px;">
         </div>
         <div class="col-md-9 p-t-2"  style="margin-top:20px;">
-            <h2 class="h2-responsive">@janedoe <button type="button" class="btn btn-success follow-btn">Follow</button></h2>
-            <p class="profile-name">Jane Doe</p>
+            <h2 class="h2-responsive">@{{page_user.username}} <button type="button" class="btn btn-success follow-btn">Follow</button></h2>
+            <p class="profile-name">{{page_user}}</p>
 
             <ul class="flex-menu">
                 <li><strong>41</strong> posts</li>

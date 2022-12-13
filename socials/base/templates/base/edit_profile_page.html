@@ -1,15 +1,13 @@
 {% extends 'main.html' %}
 
-{% block title %}
-    Edit Profile Page
-{% endblock %}
+<title>Edit Profile Page</title>
 
 {% block content %}
-<!-- {% if user.is_authenticated %} -->
+{% if user.is_authenticated %}
 <!-- {%  if user.id == profile.user.id  %} -->
 
     <div class="container shadow p-3 mb-5 bg-body rounded" style="width: 50%;margin-top: 30px;">
-        <h1 style="text-align:center; margin-top:10px; color:#1e3c72;font-weight: bolder;">Edit Profile Page</h1>
+        <h1 style="text-align:center; margin-top:10px; color:#9a35dd;font-weight: bolder;">Edit Profile Page</h1>
     <div class="form-group" style="font-weight: 600;line-height: 2.5;">
         
     
@@ -19,7 +17,7 @@
             {{ form.as_p }}
             <br>
             <button class="btn btn-primary btn-block" style="width:200px;position: relative;left:35%;
-            background: linear-gradient(to right,#373B44 ,#4286f4 );">Update Profile Page</button>
+            background: linear-gradient(to right,#623dc6 ,#9a35dd );">Update Profile Page</button>
         </form>
     </div>
     </div>
@@ -31,9 +29,9 @@
          document.getElementById("elder").placeholder=name;
     </script>
 
-<!-- {% else %}
+{% else %}
     Login required to view
-{% endif %} -->
+{% endif %} 
 
 <!-- {% else %}
 You are not the correct user to edit the page
