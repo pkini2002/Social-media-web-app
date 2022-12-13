@@ -47,7 +47,7 @@
           <img src="{% static 'images/home/profile-1.jpg' %}" alt="profile-1">
           </div>
           <div class="handle">
-              <h4 style="text-decoration: none;">Diana Ayi</h4>
+              <h4 style="text-decoration: none;">{{request.user.first_name}}</h4>
               <p class="text-muted">
                   @dayi
               </p>

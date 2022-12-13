@@ -9,7 +9,7 @@
 		<div class="profile-image"></div>
 
 		<div class="profile-info">
-			<h3 class="profile-name">Dev Ed</h3>
+			<h3 class="profile-name">{{request.user.first_name}} {{request.user.last_name}}</h3>
 			<p class="profile-desc">Developer/Conent Creator</p>
 		</div>
 	</div>
@@ -33,8 +33,7 @@
 		</ul>
 
 		<div class="action">
-			<button class="btn btn-pink">Follow</button>
-			<button class="btn btn-gray-outline">Message</button>
+			<button class="btn btn-success" style="position: relative;left: 80px;">Follow</button>
 		</div>
 	</div>
 </div>

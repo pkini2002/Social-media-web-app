@@ -16,10 +16,12 @@ from .models import *
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+from .forms import *
 
 # Create your views here.
 def home(request):
-    context={}
+    userid=request.user.id
+    context={'userid':userid}
     return render(request,"base/home.html",context)
 
 def profile(request):
@@ -98,14 +100,13 @@ def otherprofile(request):
 
 class EditProfilePageView(generic.UpdateView):
     model = Profile
-    template_name='registration/edit_profile_page.html'
-    # fields = ['bio','profile_pic','website_url','facebook_url','twitter_url','instagram_url']
-    # form_class=EditProfileNewForm
+    template_name='base/edit_profile_page.html'
+    form_class=EditProfileNewForm
     success_url=reverse_lazy('home')
 
 class ShowProfilePageView(DetailView):
     model = Profile
-    template_name = 'registration/user_profile.html'
+    template_name = 'base/Otherprofile.html'
 
     def get_context_data(self,*args,**kwargs):
         # users=Profile.objects.all()
