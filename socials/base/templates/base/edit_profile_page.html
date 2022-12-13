@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 
 {% block title %}
     Edit Profile Page
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
+<!-- {% if user.is_authenticated %} -->
 <!-- {%  if user.id == profile.user.id  %} -->
 
     <div class="container shadow p-3 mb-5 bg-body rounded" style="width: 50%;margin-top: 30px;">
@@ -35,7 +35,7 @@
     Login required to view
 {% endif %} -->
 
-{% else %}
+<!-- {% else %}
 You are not the correct user to edit the page
-{% endif %}
+{% endif %} -->
 {% endblock %}

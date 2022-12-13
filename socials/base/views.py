@@ -19,10 +19,11 @@ from django.views.generic import ListView,DetailView,CreateView,UpdateView,Delet
 from .forms import *
 
 # Create your views here.
-def home(request):
-    userid=request.user.id
-    context={'userid':userid}
-    return render(request,"base/home.html",context)
+class HomeView(ListView):
+    model = Post
+    template_name = 'base/home.html'
+    posts=Post.objects.all()
+    ordering = ['-id']
 
 def profile(request):
     context={}
@@ -103,6 +104,23 @@ class AddPostView(CreateView):
     form_class = PostForm
     # fields='__all__'
     template_name = 'base/add_post.html'
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    form_class=ProfilePageForm
+    template_name="base/create_user_profile.html"
+    # fields='__all__'
+
+    def form_valid(self,form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    form_class=EditProfileNewForm
+    template_name='base/edit_profile_page.html'
+    success_url=reverse_lazy('home')
+
 
 
 

@@ -12,7 +12,6 @@ User = get_user_model()
 # Create your models here.
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    id_user = models.IntegerField()
     description = models.TextField(blank=True)
     fname = models.TextField(blank=True)
     lname = models.TextField(blank=True)
@@ -21,6 +20,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_absolute_url(self):
+        return reverse('home')
 
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)
@@ -46,6 +48,7 @@ class Post(models.Model):
     #body=models.TextField()
     post_date=models.DateField(auto_now_add=True)
     no_of_likes = models.IntegerField(default=0)
+    location=models.CharField(max_length=255,default="")
 
     def __str__(self):
         return self.title + " | " + str(self.author)
