@@ -114,7 +114,10 @@
                   </div>
                   <div class="action-buttons">
                       <div class="interaction-buttons">
-                              <span><i class="uil uil-heart"></i></span>
+                        <!-- Like post -->
+                             <a href="/like-post?post_id={{post.id}}" style="text-decoration: none;">
+                              <span><i class="uil uil-heart" id="heart" style="color: #000;"></i></span>
+                            </a>
                                   <span><i class="uil uil-comment-dots"></i></span>
                               </div>
                       <div class="bookmark">
@@ -124,11 +127,11 @@
                   </div>
 
                   <div class="liked-by">
-                      <span><img src="{% static 'images/home/profile-10.jpg' %}" alt="profile-10"></span>
-                      <span><img src="{% static 'images/home/profile-4.jpg' %}" alt="profile-4"></span>
-                      <span><img src="{% static 'images/home/profile-15.jpg' %}" alt="profile-15"></span>
-                      <p>Liked by <b>Ernest Achiever</b> and <b>2,323 others</b></p>
-
+                    {% if post.no_of_likes == 0 %}
+                    <p><b>No Likes</b></p>
+                    {% else %}
+                      <p><b>Liked by {{post.no_of_likes}} person</b></p>
+                    {% endif %}
                   </div>
                   <div class="caption">
                       <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>

@@ -20,4 +20,5 @@ urlpatterns = [
     path('password_success/', views.password_success, name="password_success"),
     path('friends/',FriendView.as_view(),name='friends'),
     path('post/<int:pk>/comment/',AddCommentView.as_view(),name='add_comment'),
+    path('like-post',views.like_post,name='like-post')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
