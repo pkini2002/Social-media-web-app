@@ -47,7 +47,8 @@
   <div class="container">
       <div class="left">
         {% if user.is_authenticated %}
-         <a class="profile">
+
+         <a class="profile" href="{% url 'show_profile_page' user.profile.id %}">
           <div class="profile-photo" style="cursor:pointer;">
           <img src="{{user_profile.profileimg.url}}" alt="profile-1">
           </div>
@@ -58,6 +59,7 @@
               </p>
           </div>
          </a>
+  
          {% endif %}
          <!-- sidebar -->
          <div class="sidebar">
@@ -76,7 +78,7 @@
               </a>
 
               
-              <a class="menu-item">
+              <a class="menu-item" href="{% url 'show_profile_page' user.profile.id %}">
               <span><i class="uil uil-bookmark"></i></span><h3>Profile</h3>
               </a>
               <a class="menu-item">
