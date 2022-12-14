@@ -4,6 +4,7 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static 'styles/home.scss' %}" />
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock %}
 
 <!-- Title -->
@@ -12,7 +13,6 @@
 {% endblock %}
 
 {% block content %} 
-
 <nav>
   <div class="container">
     <div class="log">
@@ -27,14 +27,15 @@
         {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">logout</a>
        {% else %}
-      <a href="{% url 'login' %}">login</a>
+       <a href="{% url 'signup' %}">Signup</a>
+      <a href="{% url 'login' %}">Login</a>
        {% endif %}
          <!-- <label class="btn btn-primary" for="create-post">Create</label> -->
          <button class="btn btn-primary">
             <a href="{% url 'add_post' %}" style="color: #fff;text-decoration: none;">Create Post</a>
          </button>
           <div class="profile-photo" style="cursor:pointer;">
-               <img src="{{ page_user.profileimg.url }}" alt="profile-1">
+           <img src="{{user_profile.profileimg.url}}" alt="profile-photo">
          </div>
       </div>
   </div>
@@ -45,38 +46,41 @@
 <main style="background-color:rgb(244, 234, 234); padding-top: 40px;">
   <div class="container">
       <div class="left">
+        {% if user.is_authenticated %}
          <a class="profile">
           <div class="profile-photo" style="cursor:pointer;">
-          <img src="{{ page_user.profileimg.url }}" alt="profile-1">
+          <img src="{{user_profile.profileimg.url}}" alt="profile-1">
           </div>
           <div class="handle">
-              <h4 style="text-decoration: none;">{{request.user.first_name}}</h4>
+              <h4 style="text-decoration: none;">{{user_profile.fname}}</h4>
               <p class="text-muted">
-                  {{request.user.username}}
+                {{user_profile.username}}
               </p>
           </div>
          </a>
-
+         {% endif %}
          <!-- sidebar -->
          <div class="sidebar">
-          <a class="menu-item active">
+          <a class="menu-item active" href="{% url 'home' %}">
               <span><i class="uil uil-home"></i></span><h3>Home</h3>
           </a>
-          <a class="menu-item">
-              <span><i class="uil uil-compass"></i></span><h3>Explore</h3>
+          <a class="menu-item" href="{% url 'add_post' %}">
+              <span><i class="uil uil-compass"></i></span><h3>
+                Add Post
+            </h3>
           </a>
               
-              <a class="menu-item" id="messages-notifications">
-              <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Leaderboard</h3>
+              <a class="menu-item" href="{% url 'edit_profile_page' user.profile.id %}">
+              <span><i class="uil uil-envelope-alt"></i></span>
+              <h3>Edit Profile</h3>
               </a>
+
+              
               <a class="menu-item">
               <span><i class="uil uil-bookmark"></i></span><h3>Profile</h3>
               </a>
               <a class="menu-item">
               <span><i class="uil uil-chart-line"></i></span><h3>Analytics</h3>
-              </a>
-              <a class="menu-item" id="theme">
-              <span><i class="uil uil-palette"></i></span><h3>Theme</h3>
               </a>
          </div>
          <!-- end of sidebar -->
@@ -90,12 +94,24 @@
           <!-- FEED -->
           <div class="feeds">
               <!-- FEED 1 -->
-              {% for post in object_list %}
+              {% if count_posts == 0  %}
+              <div class="empty-state">
+                <div class="empty-state__content">
+                  <div class="empty-state__icon">
+                    <img src="{% static 'images/home/not-found.webp' %}" alt="">
+                  </div>
+                  <div class="empty-state__message" style="color: #9a35dd;font-weight: bold;font-size: 30px; text-align: center;">No posts has been added yet.</div>
+                  <br/><br/><br/>
+                </div>
+              </div>
+      
+              {% else %}
+              {% for post in all_posts reversed %}
               <div class="feed">
                   <div class="head">
                       <div class="user">
                           <div class="profile-photo">
-                              <img src="{{ page_user.profileimg.url }}" alt="profile-13" style="width:50px;">
+                              <img src="{{ profile.profileimg.url}}" alt="profile-13" style="width:50px;">
                           </div>
                           <div class="ingo">
                               <h3>{{ post.author }}</h3>
@@ -104,13 +120,23 @@
                           
                       </div>
                       <span class="edit">
-                          <i class="uil uil-ellipsis-h"></i>
+                          <!-- <i class="uil uil-ellipsis-h"> -->
+                            <ul>
+                                <li> 
+                                  <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md ">
+                                   <i class="uil-trash-alt mr-1"></i>  Delete Post
+                                  </a> 
+                              </li>
+                            </ul>
+                          <!-- </i> -->
+                        
                       </span>
 
                   </div>
                   <div class="photo">
+                    <a href="{{ post.image.url }}">
                       <img src="{{ post.image.url }}" alt="feed-1">
-
+                    </a>
                   </div>
                   <div class="action-buttons">
                       <div class="interaction-buttons">
@@ -136,74 +162,41 @@
                   <div class="caption">
                       <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>
                   </div>
-                  <div class="comments text-muted">View all 277 comments</div>
+                  <div class="comments text-muted">View all 277 comments
+                    <a href="{% url 'add_comment' post.pk %}" >Add Comment</a>
+                  <br/><br/><br/>
 
+                 {% for comment in post.comments.all %}
+                 <strong>{{ comment.name }}-{{ comment.date_added }}</strong>
+                  <br/>
+                  {{ comment.body }}
+                 <br/>
+                    <hr>
+                  </div>
               </div>
               {% endfor %}
+              {% endfor %}
+              {% endif %}
           </div>
           <!-- END OF FEEDS -->
       </div>
       <!-- END OF MIDDLE  -->
           <!-- RIGHT -->
       <div class="right">
-          <div class="messages">
-              <div class="heading">
-                  <h4 style="color:rgb(107,76,230)">Leaderboard</h4>
-
-              </div>
-              <!-- SEARCH BAR -->
-              <div class="search-bar">
-                  <i class="uil uil-search"></i>
-                  <input type="search" placeholder="Search people" id="message-search">
-
-              </div>
-             <!-- MESSAGE -->
-             <div class="message">
-             <div class="profile-photo">
-              <img src="{% static 'images/home/profile-10.jpg' %}">                       
-          </div>
-          <div class="message-body">
-              <h5>Angela Mathews</h5>
-              <p class="text-muted">Just woke up bruh</p>
-          </div>
-          </div>
-
-          <!-- MESSAGE -->
-          <div class="message">
-              <div class="profile-photo">
-               <img src="{% static 'images/home/profile-6.jpg' %}">                       
-           </div>
-           <div class="message-body">
-               <h5>Juliet Makarey</h5>
-               <!-- <p class="text-bold">2 new messages</p> -->
-           </div>
-           </div>
-
-           <!-- MESSAGE -->
-           <div class="message">
-              <div class="profile-photo">
-               <img src="{% static 'images/home/profile-7.jpg' %}">  
-               <!-- <div class="active"></div>                      -->
-           </div>
-           <div class="message-body">
-               <h5>Chantel Msiza</h5>
-               <p class="text-muted">Birthday tomorrow</p>
-           </div>
-           </div>
-      </div>
       <!-- END OF MESSAGES -->
 
       <!-- FRIEND REQUESTS -->
       <div class="friend-requests">
-          <h4 style="color:rgb(107,76,230)">Requests</h4>
+          <h4 style="color:rgb(107,76,230)">User Suggestions</h4>
           <div class="request">
               <div class="ingo">
+                {% for user in all_profile %}
                   <div class="profile-photo">
-                      <img src="{% static 'images/home/profile-13.jpg' %}">
+                      <img src="{{ user.profileimg.url }}">
                           
                   </div>
                   <div>
-                      <h5>Hajia Bintu</h5>
+                      <h5>{{user.fname}} {{user.lname}}</h5>
                       <p class="text-muted">
                           8 mutual friends
                       </p>
@@ -211,63 +204,9 @@
                       </div>
                   </div>
                   <div class="action">
-                      <button class="btn btn-primary">
-                          Accept
-                      </button>
-                      <button class="btn">
-                          Decline
-                      </button>
-              </div>
-
-          </div>
-          <!-- FRIEND REQUEST 2 -->
-          <div class="request">
-              <div class="ingo">
-                  <div class="profile-photo">
-                      <img src="{% static 'images/home/profile-17.jpg' %}">
-                          
+                     {{user.description}} 
                   </div>
-                  <div>
-                      <h5>Jacqueline Fernandes</h5>
-                      <p class="text-muted">
-                          8 mutual friends
-                      </p>
-                      
-                      </div>
-                  </div>
-                  <div class="action">
-                      <button class="btn btn-primary">
-                          Accept
-                      </button>
-                      <button class="btn">
-                          Decline
-                      </button>
-              </div>
-
-          </div>
-          <!-- FRIEND REQUEST 3 -->
-          <div class="request">
-              <div class="ingo">
-                  <div class="profile-photo">
-                      <img src="{% static 'images/home/profile-15.jpg' %}">
-                          
-                  </div>
-                  <div>
-                      <h5>Jennifer Lawrence</h5>
-                      <p class="text-muted">
-                          8 mutual friends
-                      </p>
-                      
-                      </div>
-                  </div>
-                  <div class="action">
-                      <button class="btn btn-primary">
-                          Accept
-                      </button>
-                      <button class="btn">
-                          Decline
-                      </button>
-              </div>
+              {% endfor %}
 
           </div>
       </div>
@@ -276,59 +215,6 @@
       <!-- END OF RIGHT -->
   </div>
 </main>
-
-<!-- THEME CUSTOMIZATION -->
-<div class="customize-theme">
-  <div class="card">
-      <h2>Customize your view</h2>
-      <p class="text-muted">Manage your font size,color and background</p>
-
-      <!-- FONT SIZES -->
-      <div class="font-size">
-          <h4>Font size</h4>
-          <div>
-              <h6>Aa</h6>
-              <div class="choose-size">
-                  <span class="font-size-1"></span>
-                  <span class="font-size-2 active"></span>
-                  <span class="font-size-3"></span>
-                  <span class="font-size-4"></span>
-                  <span class="font-size-5"></span>
-              </div>
-              <h3>Aa</h3>
-          </div>
-      </div>
-      <!-- PRIMARY COLORS -->
-      <div class="color">
-          <h4>Color</h4>
-          <div class="choose-color">
-          <span class="color-1 active"></span>
-          <span class="color-2"></span>
-          <span class="color-3"></span>
-          <span class="color-4"></span>
-          <span class="color-5"></span>
-      </div>
-  </div>
-
-  <!-- BACKGORUND COLORS -->
-  <div class="background">
-      <h4>Background</h4>
-      <div class="choose-bg">
-          <div class="bg-1 active">
-              <span></span>
-              <h5 for="bg-1">Light</h5>
-          </div>
-          <div class="bg-2">
-              <span></span>
-              <h5>Dim</h5>
-          </div>
-          <div class="bg-3">
-              <span></span>
-              <h5 for="bg-3">Lights Out</h5>
-          </div>
-      </div>
-  </div>
-</div>
 </div>
 
 

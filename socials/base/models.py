@@ -11,7 +11,8 @@ User = get_user_model()
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     description = models.TextField(blank=True)
     fname = models.TextField(blank=True)
     lname = models.TextField(blank=True)
@@ -19,7 +20,7 @@ class Profile(models.Model):
     profileimg = models.ImageField(upload_to='profile_images', default='blank-profile-picture.png')
 
     def __str__(self):
-        return self.user.username
+        return(str(self.user)) 
 
     def get_absolute_url(self):
         return reverse('home')
@@ -32,16 +33,14 @@ class FollowersCount(models.Model):
         return self.user
 
 class Post(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     title=models.CharField(max_length=255)
     image=models.ImageField(null=True,blank=True,upload_to="images/")
     title_tag=models.CharField(max_length=255,default="")
-    author=models.ForeignKey(User,on_delete=models.CASCADE,default="")
+    author=models.ForeignKey(User,on_delete=models.CASCADE)
     caption=RichTextField(blank=True,null=True)
     post_date=models.DateField(auto_now_add=True)
     location=models.CharField(max_length=255,default="")
     no_of_likes=models.IntegerField(default=0)
-    user = models.CharField(max_length=100,null=True)
 
     def __str__(self):
         return self.title + " | " + str(self.author)
@@ -67,4 +66,6 @@ class LikePost(models.Model):
 
     def __str__(self):
         return self.username
+
+
 
