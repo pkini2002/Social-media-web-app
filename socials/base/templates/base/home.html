@@ -151,7 +151,9 @@
                              <a href="/like-post?post_id={{post.id}}" style="text-decoration: none;">
                               <span><i class="uil uil-heart" id="heart" style="color: #000;"></i></span>
                             </a>
+                            <a href="{% url 'add_comment' post.pk %}" style="color: #000;">
                                   <span><i class="uil uil-comment-dots"></i></span>
+                            </a>
                               </div>
                       <div class="bookmark">
                           <span><i class="uil uil-bookmark-full"></i>
@@ -169,8 +171,15 @@
                   <div class="caption">
                       <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>
                   </div>
-                  <div class="comments text-muted">View all 277 comments
+                  <div class="comments text-muted">View all comments
                   </div>
+                  {% for comment in post.comments.all %}
+                  <strong>{{ comment.name }}-{{ comment.date_added }}</strong>
+                  <br/>
+                  {{ comment.body }}
+                  <br/>
+                  <hr>
+               {% endfor %}
               </div>
               {% endfor %}
               {% endif %}
