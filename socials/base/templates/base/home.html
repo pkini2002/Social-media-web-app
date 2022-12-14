@@ -48,7 +48,7 @@
       <div class="left">
         {% if user.is_authenticated %}
 
-         <a class="profile" href="{% url 'show_profile_page' user.profile.id %}">
+         <a class="profile" href="{% url 'show_profile_page' user.profile.id %}" style="text-decoration: none;">
           <div class="profile-photo" style="cursor:pointer;">
           <img src="{{user_profile.profileimg.url}}" alt="profile-1">
           </div>
@@ -63,25 +63,25 @@
          {% endif %}
          <!-- sidebar -->
          <div class="sidebar">
-          <a class="menu-item active" href="{% url 'home' %}">
+          <a class="menu-item active" href="{% url 'home' %}" style="text-decoration: none;">
               <span><i class="uil uil-home"></i></span><h3>Home</h3>
           </a>
-          <a class="menu-item" href="{% url 'add_post' %}">
+          <a class="menu-item" href="{% url 'add_post' %}" style="text-decoration: none;">
               <span><i class="uil uil-compass"></i></span><h3>
                 Add Post
             </h3>
           </a>
               
-              <a class="menu-item" href="{% url 'edit_profile_page' user.profile.id %}">
+              <a class="menu-item" href="{% url 'edit_profile_page' user.profile.id %}" style="text-decoration: none;">
               <span><i class="uil uil-envelope-alt"></i></span>
               <h3>Edit Profile</h3>
               </a>
 
               
-              <a class="menu-item" href="{% url 'show_profile_page' user.profile.id %}">
+              <a class="menu-item" href="{% url 'show_profile_page' user.profile.id %}" style="text-decoration: none;">
               <span><i class="uil uil-bookmark"></i></span><h3>Profile</h3>
               </a>
-              <a class="menu-item">
+              <a class="menu-item" style="text-decoration: none;">
               <span><i class="uil uil-chart-line"></i></span><h3>Analytics</h3>
               </a>
          </div>
@@ -106,7 +106,6 @@
                   <br/><br/><br/>
                 </div>
               </div>
-      
               {% else %}
               {% for post in all_posts reversed %}
               <div class="feed">
@@ -125,9 +124,15 @@
                           <!-- <i class="uil uil-ellipsis-h"> -->
                             <ul>
                                 <li> 
-                                  <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md ">
-                                   <i class="uil-trash-alt mr-1"></i>  Delete Post
-                                  </a> 
+                                  <!-- Edit post -->
+                                  {% if user.is_authenticated %}  
+                                  {% if user.id == post.author.id %}
+                                  <a href="{% url 'update_post' post.pk %}" class="pencil-icon"><i class="fa-solid fa-pencil"></i></a>
+                                   &nbsp;&nbsp;
+                                  <!-- Delete post -->
+                                  <a href="{% url 'delete_post' post.pk %}" class="delete-icon"><i class="fa-solid fa-trash-arrow-up"></i></a> 
+                                  {% endif %}
+                                  {% endif %}
                               </li>
                             </ul>
                           <!-- </i> -->
@@ -165,18 +170,8 @@
                       <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>
                   </div>
                   <div class="comments text-muted">View all 277 comments
-                    <a href="{% url 'add_comment' post.pk %}" >Add Comment</a>
-                  <br/><br/><br/>
-
-                 {% for comment in post.comments.all %}
-                 <strong>{{ comment.name }}-{{ comment.date_added }}</strong>
-                  <br/>
-                  {{ comment.body }}
-                 <br/>
-                    <hr>
                   </div>
               </div>
-              {% endfor %}
               {% endfor %}
               {% endif %}
           </div>
