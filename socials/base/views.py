@@ -13,10 +13,12 @@ from django.conf import settings
 from django.views.generic import DetailView,CreateView
 from django.contrib.auth.views import PasswordChangeView
 from .models import *
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.views import generic
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from .forms import *
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class HomeView(ListView):
@@ -132,15 +134,31 @@ class EditProfilePageView(generic.UpdateView):
     template_name='base/edit_profile_page.html'
     success_url=reverse_lazy('home')
 
-class ShowProfilePageView(DetailView):
-    model = Profile
-    template_name = 'base/OtherProfile.html'
+# class ShowProfilePageView(DetailView):
+#     model = Profile
+#     template_name = 'base/OtherProfile.html'
     
-    def get_context_data(self,*args,**kwargs):
-        context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
-        page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
-        context["page_user"]=page_user
-        return context
+#     def get_context_data(self,*args,**kwargs):
+#         context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
+#         page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
+#         context["page_user"]=page_user
+#         return context
+
+@login_required(login_url='signup')
+def profile(request,pk):
+    user_object=User.objects.get(username=pk)
+    user_profile=Profile.objects.get(user=user_object)
+    user_posts=Post.objects.filter(user=pk)
+    user_posts_length=len(user_posts)
+
+    context={
+        'user_object':user_object,
+        'user_profile':user_profile,
+        'user_posts':user_posts,
+        'user_posts_length':user_posts_length,
+    }
+
+    return render(request,'base/Otherprofile.html',context)
 
 class PasswordsChangeView(PasswordChangeView):
        form_class= PasswordChangingForm
@@ -157,6 +175,32 @@ class AddCommentView(CreateView):
     def form_valid(self,form):
         form.instance.post_id=self.kwargs['pk']
         return super().form_valid(form)
+
+# def LikeView(request,pk):
+#     post=get_object_or_404(Post,id=request.POST.get('post.id'))
+#     post.likes.add(request.user)
+#     return HttpResponseRedirect(reverse('home',args=[str(pk)]))
+
+@login_required(login_url='signup')
+def like_post(request):
+    username=request.user.username
+    post_id=request.GET.get('post_id')
+    post=Post.objects.get(id=post_id)
+    like_filter=LikePost.objects.filter(post_id=post_id,username=username).first()
+
+    if like_filter==None:
+        new_like=LikePost.objects.create(post_id=post_id,username=username)
+        new_like.save()
+
+        post.no_of_likes=post.no_of_likes+1
+        post.save()
+        return redirect('/')
+
+    else:
+        like_filter.delete()
+        post.no_of_likes=post.no_of_likes-1
+        post.save()
+        return redirect('/')
 
 
 

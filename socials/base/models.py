@@ -24,13 +24,6 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('home')
 
-class LikePost(models.Model):
-    post_id = models.CharField(max_length=500)
-    username = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.username
-
 class FollowersCount(models.Model):
     follower = models.CharField(max_length=100)
     user = models.CharField(max_length=100)
@@ -45,10 +38,10 @@ class Post(models.Model):
     title_tag=models.CharField(max_length=255,default="")
     author=models.ForeignKey(User,on_delete=models.CASCADE,default="")
     caption=RichTextField(blank=True,null=True)
-    #body=models.TextField()
     post_date=models.DateField(auto_now_add=True)
-    no_of_likes = models.IntegerField(default=0)
     location=models.CharField(max_length=255,default="")
+    no_of_likes=models.IntegerField(default=0)
+    user = models.CharField(max_length=100,null=True)
 
     def __str__(self):
         return self.title + " | " + str(self.author)
@@ -67,3 +60,11 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+class LikePost(models.Model):
+    post_id=models.CharField(max_length=500)
+    username=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.username
+
