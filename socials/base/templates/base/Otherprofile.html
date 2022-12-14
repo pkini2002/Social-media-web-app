@@ -15,12 +15,12 @@
 <div class="container" style="margin-top:20px;">
     <div class="row m-b-r m-t-3"  style="margin-top:40px;">
         <div class="col-md-2 offset-md-1">
-            <img src="{{ user_profile.profileimg.url }}" alt="profileimg" class="img-circle rounded-circle img-fluid" style="height: 180px; width: 150px;">
+            <img src="{{ page_user.profileimg.url }}" alt="profileimg" class="img-circle rounded-circle img-fluid" style="height: 180px; width: 150px;">
         </div>
         <div class="col-md-9 p-t-2"  style="margin-top:20px;">
-            <h2 class="h2-responsive">@{{user_profile.user.username}} <button type="button" class="btn btn-success follow-btn">Follow</button></h2>
-            <p class="profile-name">{{user_profile.fname}} {{user_profile.lname}}</p>
-            <p style="position: relative;left: 20px;">{{user_profile.description}}</p>
+            <h2 class="h2-responsive">@{{page_user.username}} <button type="button" class="btn btn-success follow-btn">Follow</button></h2>
+            <p class="profile-name">{{page_user}}</p>
+            <p style="position: relative;left: 20px;">{{page_user.description}}</p>
             <ul class="flex-menu">
                 {% if user_posts_length == 0 %}
                 <li><strong>No Posts</strong></li>

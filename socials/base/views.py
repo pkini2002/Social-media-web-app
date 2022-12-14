@@ -19,25 +19,47 @@ from django.views.generic import ListView,DetailView,CreateView,UpdateView,Delet
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from itertools import chain
+from random import random
 
 # Create your views here.
-class HomeView(ListView):
-    model = Post
-    template_name = 'base/home.html'
-    posts=Post.objects.all()
-    ordering = ['-id']
+@login_required(login_url='signup')
+def home(request):
+    user_object = User.objects.get(username=request.user.username)
+    user_profile = Profile.objects.get(user=user_object)
+    all_users = User.objects.all()
+    all_posts=Post.objects.all()
+    all_profile=Profile.objects.all()
+    count_posts=len(all_posts)
 
-    def get_context_data(self,*args,**kwargs):
-        context=super(HomeView,self).get_context_data(*args,**kwargs)
-        page_user=get_object_or_404(Profile)
-        context["page_user"]=page_user
-        return context
+    context={
+        'user_object':user_object,
+        'user_profile':user_profile,
+        'all_users':all_users,
+        'all_posts':all_posts,
+        'all_profile':all_profile,
+        'count_posts':count_posts
+    }
+    return render(request,"base/home.html",context)
+
 
 def profile(request):
     context={}
     return render(request,"base/profile.html",context)
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'base/Otherprofile.html'
+
+    def get_context_data(self,*args,**kwargs):
+        context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
+        page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
+        context["page_user"]=page_user
+        return 
+
+def profile(request):
+    return render(request,'base/profile.html')
     
-# Create your views here.
 def login(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -91,10 +113,6 @@ def logout(request):
     auth_logout(request)
     return redirect('/')
 
-# def friends(request):
-#     context={}
-#     return render(request,"base/friends.html",context)
-
 class FriendView(ListView):
     model = Profile
     template_name = 'base/friends.html'
@@ -115,14 +133,12 @@ def error(request):
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
-    # fields='__all__'
     template_name = 'base/add_post.html'
 
 class CreateProfilePageView(CreateView):
     model = Profile
     form_class=ProfilePageForm
     template_name="base/create_user_profile.html"
-    # fields='__all__'
 
     def form_valid(self,form):
         form.instance.user=self.request.user
@@ -133,16 +149,6 @@ class EditProfilePageView(generic.UpdateView):
     form_class=EditProfileNewForm
     template_name='base/edit_profile_page.html'
     success_url=reverse_lazy('home')
-
-# class ShowProfilePageView(DetailView):
-#     model = Profile
-#     template_name = 'base/OtherProfile.html'
-    
-#     def get_context_data(self,*args,**kwargs):
-#         context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
-#         page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
-#         context["page_user"]=page_user
-#         return context
 
 @login_required(login_url='signup')
 def profile(request,pk):
@@ -176,10 +182,6 @@ class AddCommentView(CreateView):
         form.instance.post_id=self.kwargs['pk']
         return super().form_valid(form)
 
-# def LikeView(request,pk):
-#     post=get_object_or_404(Post,id=request.POST.get('post.id'))
-#     post.likes.add(request.user)
-#     return HttpResponseRedirect(reverse('home',args=[str(pk)]))
 
 @login_required(login_url='signup')
 def like_post(request):
@@ -201,6 +203,56 @@ def like_post(request):
         post.no_of_likes=post.no_of_likes-1
         post.save()
         return redirect('/')
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'base/delete_post.html'
+    success_url = reverse_lazy('home')
+
+@login_required(login_url='signup')
+def search(request):
+    user_object = User.objects.get(username=request.user.username)
+    user_profile = Profile.objects.get(user=user_object)
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        username_object = User.objects.filter(username__icontains=username)
+
+        username_profile = []
+        username_profile_list = []
+
+        for users in username_object:
+            username_profile.append(users.id)
+
+        for ids in username_profile:
+            profile_lists = Profile.objects.filter(id_user=ids)
+            username_profile_list.append(profile_lists)
+        
+        username_profile_list = list(chain(*username_profile_list))
+    return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+
+class UpdatePostView(UpdateView):
+    model = Post
+    form_class=EditForm
+    template_name = 'base/update_post.html'
+
+@login_required(login_url='signup')
+def follow(request):
+    if request.method == 'POST':
+        follower = request.POST['follower']
+        user = request.POST['user']
+
+        if FollowersCount.objects.filter(follower=follower, user=user).first():
+            delete_follower = FollowersCount.objects.get(follower=follower, user=user)
+            delete_follower.delete()
+            return redirect('/profile/'+user)
+        else:
+            new_follower = FollowersCount.objects.create(follower=follower, user=user)
+            new_follower.save()
+            return redirect('/profile/'+user)
+    else:
+        return redirect('/')
+
 
 
 
