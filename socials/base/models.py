@@ -38,10 +38,10 @@ class Post(models.Model):
     title_tag=models.CharField(max_length=255,default="")
     author=models.ForeignKey(User,on_delete=models.CASCADE,default="")
     caption=RichTextField(blank=True,null=True)
-    #body=models.TextField()
     post_date=models.DateField(auto_now_add=True)
     location=models.CharField(max_length=255,default="")
     no_of_likes=models.IntegerField(default=0)
+    user = models.CharField(max_length=100,null=True)
 
     def __str__(self):
         return self.title + " | " + str(self.author)
