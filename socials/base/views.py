@@ -225,11 +225,11 @@ def search(request):
             username_profile.append(users.id)
 
         for ids in username_profile:
-            profile_lists = Profile.objects.filter(id_user=ids)
+            profile_lists = Profile.objects.filter(id=ids)
             username_profile_list.append(profile_lists)
         
         username_profile_list = list(chain(*username_profile_list))
-    return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+    return render(request, 'base/search.html', { 'user_profile':user_profile,'username_profile_list': username_profile_list,'username_profile':username_profile})
 
 class UpdatePostView(UpdateView):
     model = Post

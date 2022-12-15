@@ -18,11 +18,17 @@
     <div class="log">
       <img src="{% static 'images/truffle.png' %}" style="height:75px;cursor:pointer;">
     </div>
+
+    <!-- Search bar -->
+    <form action="/search" method="POST">
+      {% csrf_token %}
       <div class="search-bar">
-          <i class="uil uil-search"></i>
-          <input type="search" placeholder="Search for creators,
-          inspirations, and projects">
+          <input type="search" placeholder="Search for other users" name="username">
+          <button type="submit"><i class="uil uil-search"></i> </button> 
       </div>
+      </form>
+
+
       <div class="create">
         {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">logout</a>
@@ -155,10 +161,6 @@
                                   <span><i class="uil uil-comment-dots"></i></span>
                             </a>
                               </div>
-                      <div class="bookmark">
-                          <span><i class="uil uil-bookmark-full"></i>
-
-                      </div>
                   </div>
 
                   <div class="liked-by">
@@ -199,20 +201,21 @@
                 {% for user in all_profile %}
                   <div class="profile-photo">
                       <img src="{{ user.profileimg.url }}">
-                          
                   </div>
                   <div>
                       <h5>{{user.fname}} {{user.lname}}</h5>
                       <p class="text-muted">
-                          8 mutual friends
+                            {{user.description}} 
                       </p>
                       
                       </div>
+                      <div class="action">
+                        <div class="btn btn-success">Follow</div>
+                     </div> 
+                  <hr>
+                  {% endfor %}
                   </div>
-                  <div class="action">
-                     {{user.description}} 
-                  </div>
-              {% endfor %}
+        
 
           </div>
       </div>
