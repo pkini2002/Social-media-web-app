@@ -110,7 +110,7 @@ def signup(request):
             user.save() 
             auth_login(request, user)    
             messages.add_message(request, messages.INFO, 'You have successfully signed up.')
-            return redirect('/')
+            return redirect('/create_profile_page')
     else:
         return render(request,"base/signup.html")
     
@@ -131,9 +131,6 @@ class FriendView(ListView):
         context["page_user"]=page_user
         return context
 
-def error(request):
-    context={}
-    return render(request,"base/404.html",context)
 
 class AddPostView(CreateView):
     model = Post
