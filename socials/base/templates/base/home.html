@@ -92,7 +92,7 @@
           </a>
               
               <a class="menu-item" href="{% url 'edit_profile_page' user.profile.id %}" style="text-decoration: none;">
-              <span><i class="uil uil-envelope-alt"></i></span>
+              <span><i class="uil uil-edit"></i></span>
               <h3>Edit Profile</h3>
               </a>
 
@@ -100,9 +100,10 @@
               <a class="menu-item" href="{% url 'show_profile_page' user.profile.id %}" style="text-decoration: none;">
               <span><i class="uil uil-bookmark"></i></span><h3>Profile</h3>
               </a>
-              <a class="menu-item" style="text-decoration: none;">
-              <span><i class="uil uil-chart-line"></i></span><h3>Analytics</h3>
-              </a>
+
+              <a class="menu-item" href="/password" style="text-decoration: none;">
+                <span><i class="uil uil-lock"></i></span><h3>Change Password</h3>
+                </a>
          </div>
          <!-- end of sidebar -->
          <button class="btn btn-primary">
