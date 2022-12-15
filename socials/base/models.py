@@ -51,6 +51,9 @@ class Post(models.Model):
     def get_owner_pp(self):
         return self.author.profileimg.url
 
+    def profileid(self):
+        return self.author.user.id
+
 class Comment(models.Model):
     post=models.ForeignKey(Post,related_name="comments",on_delete=models.CASCADE)
     name=models.CharField(max_length=255)
