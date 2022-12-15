@@ -24,5 +24,6 @@ urlpatterns = [
     path('like-post',views.like_post,name='like-post'),
     path('post/<int:pk>/remove',DeletePostView.as_view(),name="delete_post"),
     path('post/edit/<int:pk>',UpdatePostView.as_view(),name="update_post"),
-    path('search/',views.search,name='search')
+    path('search',views.search,name='search'),
+    path('follow/',views.follow,name='follow'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

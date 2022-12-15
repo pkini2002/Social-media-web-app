@@ -20,7 +20,7 @@ from .forms import *
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from itertools import chain
-from random import random
+import random
 
 # Create your views here.
 @login_required(login_url='signup')
@@ -32,13 +32,23 @@ def home(request):
     all_profile=Profile.objects.all()
     count_posts=len(all_posts)
 
+    my_user=[user_profile]
+    suggestion_users=[]
+
+    for user in all_profile:
+        if user not in my_user:
+            suggestion_users.append(user)
+
+    random.shuffle(suggestion_users)
+
     context={
         'user_object':user_object,
         'user_profile':user_profile,
         'all_users':all_users,
         'all_posts':all_posts,
         'all_profile':all_profile,
-        'count_posts':count_posts
+        'count_posts':count_posts,
+        'suggestion_users':suggestion_users,
     }
     return render(request,"base/home.html",context)
 
@@ -225,11 +235,11 @@ def search(request):
             username_profile.append(users.id)
 
         for ids in username_profile:
-            profile_lists = Profile.objects.filter(id_user=ids)
+            profile_lists = Profile.objects.filter(id=ids)
             username_profile_list.append(profile_lists)
         
         username_profile_list = list(chain(*username_profile_list))
-    return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+    return render(request, 'base/search.html', { 'user_profile':user_profile,'username_profile_list': username_profile_list,'username_profile':username_profile})
 
 class UpdatePostView(UpdateView):
     model = Post

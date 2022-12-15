@@ -36,7 +36,7 @@ class Post(models.Model):
     title=models.CharField(max_length=255)
     image=models.ImageField(null=True,blank=True,upload_to="images/")
     title_tag=models.CharField(max_length=255,default="")
-    author=models.ForeignKey(User,on_delete=models.CASCADE)
+    author=models.ForeignKey(Profile,on_delete=models.CASCADE)
     caption=RichTextField(blank=True,null=True)
     post_date=models.DateField(auto_now_add=True)
     location=models.CharField(max_length=255,default="")
@@ -47,6 +47,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+    def get_owner_pp(self):
+        return self.author.profileimg.url
 
 class Comment(models.Model):
     post=models.ForeignKey(Post,related_name="comments",on_delete=models.CASCADE)
