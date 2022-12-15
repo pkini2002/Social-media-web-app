@@ -1,11 +1,12 @@
 {% extends 'main.html' %} {% load static %} {% block styles %}
 <!-- Replace {name} with the respective css file -->
-<link rel="stylesheet" href="{% static 'styles/search.css' %}" />
+<link rel="stylesheet" href="{% static 'styles/search.scss' %}" />
 {% endblock %}
 
 {% block content %}
 
 <div class="container">
+{% if username_profile_list %}
 {% for users in username_profile_list %}
 <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
@@ -21,6 +22,25 @@
     </div>
   </div>
 {% endfor %}
+{% else %}
+
+<div class="empty-state">
+    <div class="empty-state__content">
+      <div class="empty-state__icon">
+        <img src="{% static 'images/home/not-found.webp' %}" alt="" style="position: relative;left: 350px;">
+      </div>
+      <div class="empty-state__message" style="color: #9a35dd;font-weight: bold;font-size: 30px; text-align: center;">No Users found
+        <br/><br/>
+        <a href="{% url 'home' %}" style="text-decoration: none; color: #fff;">
+            <button type="submit" class="btn btn-success">Go back</button>
+        </a>
+     </div>
+      <br/><br/><br/>
+      
+    </div>
+  </div>
+
+{% endif %}
 </div>
 
 {% endblock %}
