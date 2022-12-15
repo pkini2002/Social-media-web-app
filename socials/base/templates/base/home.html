@@ -173,16 +173,55 @@
                   <div class="caption">
                       <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>
                   </div>
-                  <div class="comments text-muted">View all comments
+
+
+                <!-- Modal -->
+
+
+<a data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+  View all comments
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Comments</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% for comment in post.comments.all %}
+        <strong>{{ comment.name }}-{{ comment.date_added }}</strong>
+        <br/>
+        {{ comment.body }}
+        <br/>
+        <hr>
+        {% endfor %} 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+                  <!-- <div class="comments text-muted">View all comments
                   </div>
+
+          
                   {% for comment in post.comments.all %}
                   <strong>{{ comment.name }}-{{ comment.date_added }}</strong>
                   <br/>
                   {{ comment.body }}
                   <br/>
                   <hr>
-               {% endfor %}
-              </div>
+                  {% endfor %} -->
+                  </div>
               {% endfor %}
               {% endif %}
           </div>
