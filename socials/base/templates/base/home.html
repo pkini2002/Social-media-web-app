@@ -118,7 +118,7 @@
                   <div class="head">
                       <div class="user">
                           <div class="profile-photo">
-                              <img src="{{ profile.profileimg.url}}" alt="profile-13" style="width:50px;">
+                              <img src="{{ post.get_owner_pp }}" alt="profile-13" style="width:50px;">
                           </div>
                           <div class="ingo">
                               <h3>{{ post.author }}</h3>
@@ -198,7 +198,7 @@
           <h4 style="color:rgb(107,76,230)">User Suggestions</h4>
           <div class="request">
               <div class="ingo">
-                {% for user in all_profile %}
+                {% for user in suggestion_users %}
                   <div class="profile-photo">
                       <img src="{{ user.profileimg.url }}">
                   </div>
