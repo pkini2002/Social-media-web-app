@@ -1,11 +1,9 @@
-import email
 from multiprocessing import context
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout,update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from django.core.mail import EmailMultiAlternatives,send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -215,7 +213,7 @@ def search(request):
 
     if request.method == 'POST':
         username = request.POST['username']
-        username_object = User.objects.filter(username__icontains=username)
+        username_object = Profile.objects.filter(username__icontains=username)
 
         username_profile = []
         username_profile_list = []

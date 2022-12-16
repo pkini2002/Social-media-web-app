@@ -185,7 +185,14 @@
                         </a>
                   </div>
 
-                
+                <!-- Like section -->
+                  <div class="liked-by">
+                    {% if post.no_of_likes == 0 %}
+                    <p><b>No Likes</b></p>
+                    {% else %}
+                      <p><b>Liked by {{post.no_of_likes}} person</b></p>
+                    {% endif %}
+                  </div>
       
                   <div class="caption">
                       <p><b>{{ post.author }}</b> {{ post.caption|safe }}</p>
@@ -250,9 +257,7 @@
                       </p>
                       
                       </div>
-                      <div class="action">
-                        <div class="btn btn-success">Follow</div>
-                     </div> 
+                  
                   <hr>
                   {% endfor %}
                   </div>
