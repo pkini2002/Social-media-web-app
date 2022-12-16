@@ -18,15 +18,27 @@
             <img src="{{ page_user.profileimg.url }}" alt="profileimg" class="img-circle rounded-circle img-fluid" style="height: 180px; width: 150px;">
         </div>
         <div class="col-md-9 p-t-2"  style="margin-top:20px;">
-            <h2 class="h2-responsive">@{{page_user.username}} <button type="button" class="btn btn-success follow-btn">Follow</button></h2>
+            <h2 class="h2-responsive">@{{page_user.username}} </h2>
+            <form action="/follow" method="POST">
+                {% csrf_token %}
+            <input type="hidden" value="{{page_user.username}}" name="user" />
+            <input type="hidden" value="{{request.user.username}}" name="follower" />
+
+            {% if page_user.id != request.user.id %}
+            <a data-ripple="">
+            <button type="submit" class="btn btn-success follow-btn" style="position: relative;left: 300px; bottom: 40px;">{{button_text}}</button></h2>
+            </a>
+            {% endif %}
+
             <p class="profile-name">{{page_user.fname}}</p>
             <p style="position: relative;left: 20px;">{{page_user.description}}</p>
             <ul class="flex-menu">
                 
                 <li><strong>{{num_posts}}</strong> posts</li>
-                <li><strong>47k</strong> followers</li>
-                <li><strong>208</strong> following</li>
+                <li><strong>{{user_followers}}</strong> followers</li>
+                <li><strong>{{user_following}}</strong> following</li>
             </ul>
+           </form>
         </div>
     </div>
     <hr class="border border-1 border-success">

@@ -1,11 +1,9 @@
-import email
 from multiprocessing import context
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout,update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from django.core.mail import EmailMultiAlternatives,send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -60,10 +58,22 @@ class ShowProfilePageView(DetailView):
         context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
         page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
         logged_in_user_posts = Post.objects.filter(author=page_user)
+
+        if FollowersCount.objects.filter(user=page_user).first():
+            button_text='UnFollow'
+        else:
+            button_text='Follow'
+
+        user_followers=len(FollowersCount.objects.filter(user=page_user))
+        user_following=len(FollowersCount.objects.filter(follower=page_user))
+
         num_posts=len(logged_in_user_posts)
         context["page_user"]=page_user
         context['logged_in_user_posts']=logged_in_user_posts
         context['num_posts']=num_posts
+        context['button_text']=button_text
+        context['user_followers']=user_followers
+        context['user_following']=user_following
         return context
     
 def login(request):
@@ -110,7 +120,7 @@ def signup(request):
             user.save() 
             auth_login(request, user)    
             messages.add_message(request, messages.INFO, 'You have successfully signed up.')
-            return redirect('/')
+            return redirect('/create_profile_page')
     else:
         return render(request,"base/signup.html")
     
@@ -131,9 +141,6 @@ class FriendView(ListView):
         context["page_user"]=page_user
         return context
 
-def error(request):
-    context={}
-    return render(request,"base/404.html",context)
 
 class AddPostView(CreateView):
     model = Post
@@ -206,7 +213,7 @@ def search(request):
 
     if request.method == 'POST':
         username = request.POST['username']
-        username_object = User.objects.filter(username__icontains=username)
+        username_object = Profile.objects.filter(username__icontains=username)
 
         username_profile = []
         username_profile_list = []
@@ -235,11 +242,11 @@ def follow(request):
         if FollowersCount.objects.filter(follower=follower, user=user).first():
             delete_follower = FollowersCount.objects.get(follower=follower, user=user)
             delete_follower.delete()
-            return redirect('/profile/'+user)
+            return redirect('/')
         else:
             new_follower = FollowersCount.objects.create(follower=follower, user=user)
             new_follower.save()
-            return redirect('/profile/'+user)
+            return redirect('/')
     else:
         return redirect('/')
 

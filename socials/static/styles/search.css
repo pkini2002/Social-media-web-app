@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+/* CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--Very-dark-blue);
+  background-image: url("https://kellychi22.github.io/frontend-mentor-solutions/08-profile-card-component//images/bg-pattern-top.svg"),
+    url("https://kellychi22.github.io/frontend-mentor-solutions/08-profile-card-component//images/bg-pattern-bottom.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 50vw bottom 45vh, left 50vw top 45vh;
+}
+
+/* separate styling */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 21rem;
+  height: 25rem;
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 20px rgba(0 0 0 /0.15);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 300ms ease;
+}
+
+.profile:hover {
+  transform: scale(1.03);
+}
+
+.profile__bg {
+  height: 40%;
+  background-image: url("https://kellychi22.github.io/frontend-mentor-solutions/08-profile-card-component//images/bg-pattern-card.svg");
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  top: 50px;
+  height: 60%;
+  padding-top: 3.5em;
+  background-color: white;
+}
+
+
+
+
+.profile__location {
+  font-size: 15px;
+  margin-bottom: 2em;
+}
+
+.profile__img__container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 28%;
+  left: 35%;
+}
+
+.profile__img {
+  width: 6rem;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.empty-state {
+  width: 750px;
+  margin: 40px auto;
+  background: #ffffff;
+  box-shadow: 1px 2px 10px #e1e3ec;
+  border-radius: 4px;
+}
+
+.empty-state__icon {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  border-radius: 200px;
+  justify-content: center;
+  background-color: #f7fafc;
+  box-shadow: 0px 2px 1px #e1e3ec;
+}
+
+    img {
+      width: 170px;
+    }
+
+    .empty-state__message {
+      color: #38a169;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 0.85rem;
+    }
+
+    .empty-state__help {
+      color: #a2a5b9;
+      font-size: 0.875rem;
+    }
+
+
+.credit {
+  color: #A2A5B9;
+  font-size: .75rem;
+  text-align: center;
+}
+

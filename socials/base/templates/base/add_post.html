@@ -1,32 +1,30 @@
 {% extends 'main.html' %}
 {% load static %} 
-
 {% block styles %}
 <link rel="stylesheet" href="{% static 'styles/post.css' %}" />
 {% endblock %}
 
-<!-- Title -->
-{% block title %}
-<title>Post</title>
-{% endblock %}
+<title>
+    Add a new  Post
+</title>
 
 {% block content %}
-<div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-5 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-        </div>
-        <div class="col-md-7 border-right wrapper">
-           <form method="POST" enctype="multipart/form-data">
+{% if user.is_authenticated %}
+   
+    <div class="container shadow p-3 mb-5 bg-body rounded con" style="width: 80%;margin-top: 30px;">
+        <h1 style="text-align:center; margin-top:10px;color:#9a35dd;font-weight: bolder">Add Post</h1>
+        <br>
+    <div class="form-group" style="font-weight: 600;line-height: 2.5;">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.media }}
             {{ form.as_p }}
-            <button class="btn btn-primary"> Add Post</button>
-           </form>
-        </div>
+            <br>
+            <button class="btn btn-primary btn-block" style="width:200px;position: relative;left:40%;
+            background: linear-gradient(to right,#623dc6 ,#9a35dd );">Post</button>
+        </form>
     </div>
-</div>
-
-<script src="{% static 'scripts/vanilla-tilt.js' %}"></script>
-
+    </div>
+    <br/><br/>
+{% endif %}
 {% endblock %}

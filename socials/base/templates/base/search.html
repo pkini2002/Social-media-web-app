@@ -1,33 +1,39 @@
+
+
 {% extends 'main.html' %} {% load static %} {% block styles %}
-<!-- Replace {name} with the respective css file -->
-<link rel="stylesheet" href="{% static 'styles/search.scss' %}" />
+
+<link rel="stylesheet" href="{% static 'styles/search.css' %}" />
 {% endblock %}
 
 {% block content %}
 
-<div class="container">
+<main>
 {% if username_profile_list %}
 {% for users in username_profile_list %}
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{users.profileimg.url}}" class="img-fluid rounded-start" alt="profileimg">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{users.fname}} | {{users.username}}</h5>
-          <p class="card-text">{{users.description}}</p>
+  <article class="profile">
+    <div class="profile__bg"></div>
+    <div class="profile__info">
+      <h2 class="profile__name" style=" color: rgb(2, 60, 77);">{{users.fname}} {{users.name}}</h2>
+      <p style="font-weight: bold; color: rgb(2, 71, 90);">@{{users.username}}</p>
+      <p class="profile__location text-muted" style=" color: rgb(2, 61, 78);">{{users.description}}</p>
+      <div class="profile__stats">
+        <div class="stat">
+          <p class="stat__number">80K</p>
+          <p class="stat__name">Followers</p>
         </div>
+       
       </div>
     </div>
-  </div>
-{% endfor %}
-{% else %}
-
-<div class="empty-state">
+    <div class="profile__img__container">
+      <img class="profile__img" src="{{users.profileimg.url}}">
+    </div>
+  </article>
+  {% endfor %}
+  {% else %}
+  <div class="empty-state">
     <div class="empty-state__content">
       <div class="empty-state__icon">
-        <img src="{% static 'images/home/not-found.webp' %}" alt="" style="position: relative;left: 350px;">
+        <img src="{% static 'images/home/not-found.webp' %}" alt="" style="position: relative;left: 300px;">
       </div>
       <div class="empty-state__message" style="color: #9a35dd;font-weight: bold;font-size: 30px; text-align: center;">No Users found
         <br/><br/>
@@ -39,8 +45,9 @@
       
     </div>
   </div>
+  {% endif %}
+</main>
 
-{% endif %}
-</div>
+
 
 {% endblock %}
