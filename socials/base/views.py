@@ -232,11 +232,11 @@ def follow(request):
         if FollowersCount.objects.filter(follower=follower, user=user).first():
             delete_follower = FollowersCount.objects.get(follower=follower, user=user)
             delete_follower.delete()
-            return redirect('/profile/'+user)
+            return redirect('/')
         else:
             new_follower = FollowersCount.objects.create(follower=follower, user=user)
             new_follower.save()
-            return redirect('/profile/'+user)
+            return redirect('/')
     else:
         return redirect('/')
 
