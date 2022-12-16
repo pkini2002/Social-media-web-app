@@ -60,10 +60,22 @@ class ShowProfilePageView(DetailView):
         context=super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
         page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
         logged_in_user_posts = Post.objects.filter(author=page_user)
+
+        if FollowersCount.objects.filter(follower=page_user).first():
+            button_text='UnFollow'
+        else:
+            button_text='Follow'
+
+        user_followers=len(FollowersCount.objects.filter(user=args))
+        user_following=len(FollowersCount.objects.filter(follower=args))
+
         num_posts=len(logged_in_user_posts)
         context["page_user"]=page_user
         context['logged_in_user_posts']=logged_in_user_posts
         context['num_posts']=num_posts
+        context['button_text']=button_text
+        context['user_followers']=user_followers
+        context['user_following']=user_following
         return context
     
 def login(request):
