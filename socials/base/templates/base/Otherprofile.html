@@ -21,8 +21,8 @@
             <h2 class="h2-responsive">@{{page_user.username}} </h2>
             <form action="/follow" method="POST">
                 {% csrf_token %}
-            <input type="hidden" value="{{page_user.username}}" name="follower" />
-            <input type="hidden" value="{{request.user.username}}" name="user" />
+            <input type="hidden" value="{{page_user.username}}" name="user" />
+            <input type="hidden" value="{{request.user.username}}" name="follower" />
 
             {% if page_user.id != request.user.id %}
             <a data-ripple="">

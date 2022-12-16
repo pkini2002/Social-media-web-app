@@ -61,13 +61,13 @@ class ShowProfilePageView(DetailView):
         page_user=get_object_or_404(Profile,id=self.kwargs['pk'])
         logged_in_user_posts = Post.objects.filter(author=page_user)
 
-        if FollowersCount.objects.filter(follower=page_user).first():
+        if FollowersCount.objects.filter(user=page_user).first():
             button_text='UnFollow'
         else:
             button_text='Follow'
 
-        user_followers=len(FollowersCount.objects.filter(user=args))
-        user_following=len(FollowersCount.objects.filter(follower=args))
+        user_followers=len(FollowersCount.objects.filter(user=page_user))
+        user_following=len(FollowersCount.objects.filter(follower=page_user))
 
         num_posts=len(logged_in_user_posts)
         context["page_user"]=page_user
