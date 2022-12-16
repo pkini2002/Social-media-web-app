@@ -3,8 +3,9 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'styles/home.scss' %}" />
+
+<!-- Icons -->
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
  <!-- Font-awesome -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,7 +48,6 @@
        <a href="{% url 'signup' %}">Signup</a>
       <a href="{% url 'login' %}">Login</a>
        {% endif %}
-         <!-- <label class="btn btn-primary" for="create-post">Create</label> -->
          <button class="btn btn-primary">
             <a href="{% url 'add_post' %}" style="color: #fff;text-decoration: none;">Create Post</a>
          </button>
@@ -164,7 +164,7 @@
                   </div>
                   <div class="photo">
                     <a href="{{ post.image.url }}">
-                      <img src="{{ post.image.url }}" alt="feed-1">
+                      <img src="{{ post.image.url }}" alt="feed-1" style="height: 450px;">
                     </a>
                   </div>
                   <div class="action-buttons">
@@ -269,6 +269,7 @@
 </div>
 
 <script type="text/javascript">
+
  (function() {
   const heart = document.getElementById('heart');
   heart.addEventListener('click', function() {

@@ -25,7 +25,9 @@
       </div>
     </div>
     <div class="profile__img__container">
+      <a href="{% url 'show_profile_page' users.id %}">
       <img class="profile__img" src="{{users.profileimg.url}}">
+      </a>
     </div>
   </article>
   {% endfor %}
