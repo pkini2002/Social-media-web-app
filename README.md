@@ -8,8 +8,29 @@
 <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>
 </p>
 
-### Project Description and features
+### Pages
 
+- Login Page
+- Signup Page
+- Create Profile Page
+- Edit Profile Page
+- Create Post Page
+- Delete Post Page
+- Update post page
+- Password Reset Page
+- Feed/Home page
+- User Profile Page
+- Search Results Page
+- Post Comment Page
+
+### Features
+
+- Follow/Unfollow Users
+- Like/Unlike the posts
+- Download the post images
+- Comment on user posts
+- User suggestion section
+- Search users through the search bar
 
 ### Tools and Techs
 
@@ -86,31 +107,37 @@ Database: `Sqlite3`
   
  ### Snapshots
 
-1. Signup Page
+**1. Signup Page**
 
 ![Signup page](https://user-images.githubusercontent.com/84091455/208101528-a448872c-6e8c-4f9e-b287-1c64a58d0c6f.png)
 
-2. Login Page
+**2. Login Page**
 
 ![Login page](https://user-images.githubusercontent.com/84091455/208101465-29c16377-81a7-47c5-a051-c5ca103994a2.png)
 
-3. Home/Feed Page
+**3. Home/Feed Page**
 
 ![Home Page](https://user-images.githubusercontent.com/84091455/208101566-beb72751-bfe6-4d4e-939a-09352b517206.png)
 
-4. Comment Display
+**4. Comment Display**
 
 ![Comment Display](https://user-images.githubusercontent.com/84091455/208101614-3500b844-f657-494f-b998-9bde17824aeb.png)
 
-5. Profile Page
+**5. Profile Pages**
+
+**User Profile**
 
 ![Show Profile](https://user-images.githubusercontent.com/84091455/208101687-2ed8cc97-7e6b-4f65-b7cc-d0aaae732d14.png)
 
-6. Search Result Users Page
+**Other's Profile**
+
+![127 0 0 1_8000_4_profile_(Nest Hub)](https://user-images.githubusercontent.com/84091455/208229214-687fcdea-72a0-4f86-afc4-1253629006e8.png)
+
+
+**6. Search Result Users Page**
 
 ![Search Result](https://user-images.githubusercontent.com/84091455/208101657-497a2549-c882-4a50-93eb-fcd261201a13.png)
 
-7. Create a user profile page
+**7. Create a user profile page**
 
 ![Create user profile](https://user-images.githubusercontent.com/84091455/208101772-e022f7ee-5c8f-4799-b0be-b5d43effd1d9.png)
-
