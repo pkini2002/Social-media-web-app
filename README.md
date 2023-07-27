@@ -3,6 +3,10 @@
 
 <p align="center"> <img src="https://user-images.githubusercontent.com/84091455/208230388-5ca38084-1973-49fd-883a-bbdb4f51d3a6.png" height=200 /> </p>
 
+<a href="https://codeclimate.com/github/pkini2002/Social-media-web-app/maintainability">
+<img src="https://api.codeclimate.com/v1/badges/a5688e693a48ff0953ca/maintainability" /></a>
+<a href="https://codeclimate.com/github/pkini2002/Social-media-web-app/test_coverage">
+<img src="https://api.codeclimate.com/v1/badges/a5688e693a48ff0953ca/test_coverage" /></a>
 
 <p align="center">
 <a href="https://www.python.org/"><img src="https://forthebadge.com/images/badges/made-with-python.svg" border="0" title="Made with Python" />
